@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'festivals#index'
+  resources :festivals, :only => [:index]
+  root :to => "festivals#index"
 end
