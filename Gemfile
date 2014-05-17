@@ -38,6 +38,9 @@ gem 'awesome_print'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'dotenv-rails', :groups => [:development, :test]
+gem 'httparty'
+gem 'json'
 
 group :development, :test do
   gem 'rspec-rails'
