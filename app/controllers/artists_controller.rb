@@ -4,7 +4,6 @@ class ArtistsController < ApplicationController
 		Artist.create(artist_params)
 	end
 
-
 	private
 
 	def artist_params
