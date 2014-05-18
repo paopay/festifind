@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140517220632) do
     t.float    "lng"
     t.float    "popularity"
     t.string   "url"
+    t.string   "playlist_url"
+    t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
