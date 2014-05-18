@@ -1,7 +1,6 @@
-<%@festivals.each do |festival|%>
-	<%=festival.display_name%>
-	<%=festival.city%>
-	<%=festival.start_date%>
-	<%=festival.icon%>
-	<%=festival.playlist_url%>
-<%end%>
+<div id="header">FestiFind</div>
+<div id="grid">
+  <% @festivals.each do |festival| %>
+    <%= render "festival" %>
+  <% end %>
+</div>
