@@ -11,6 +11,7 @@ class Festival < ActiveRecord::Base
 
   def get_track_json(songkick_artist_id)
     query_url = "http://developer.echonest.com/api/v4/playlist/static?api_key=" + API_KEY + "&artist_id=songkick:artist:" + songkick_artist_id + "&sort=song_hotttnesss-desc&results=3&type=artist&bucket=tracks&bucket=id:rdio-US&limit=true"
+    puts query_url
 
     query_response = HTTParty.get(query_url).body
 
