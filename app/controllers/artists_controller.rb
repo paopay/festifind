@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
+
 	def create
 		Artist.create(artist_params)
 	end
-
 
 	private
 
