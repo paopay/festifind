@@ -2,6 +2,9 @@ class FestivalsController < ApplicationController
 
   def index
   	@festivals = Festival.all
+    @festivals.to_a.sort_by! do |festival|
+      festival.start_date
+    end
   end
 
   def create
@@ -77,7 +80,7 @@ class FestivalsController < ApplicationController
   def festival_params
   	params.require(:festival).permit(:song_kick_id, :display_name,
     :start_date, :end_date, :city_name, :lat, :lng,
-    :popularity, :url, :playlist_url, :icon)
+    :popularity, :url, :playlist_url, :icon, :fest_icon)
   end
 
   require 'om'
