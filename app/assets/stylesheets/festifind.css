@@ -15,14 +15,45 @@ body {
 
 #grid {
   margin: 0 auto;
-  text-align:center;
+  text-align: center;
+}
+
+.block, .image, .info {
+  overflow: hidden;
+}
+
+.image, .info {
+  vertical-align: middle;
 }
 
 .block {
   height: 300px;
   width: 300px;
-  display: inline-block;
+  display: inline-table;
   background-color: #ecf0f1;
   border-radius: 10px;
   margin: 1px;
+  padding: 2px;
+
+}
+
+.image {
+  display: table-cell;
+}
+
+.info {
+  display: none;
+}
+
+.festival-icon {
+  max-width: 290px;
+  max-height: 290px;
+}
+
+.playlist {
+  padding-top: 10px;
+}
+
+.playlist-object {
+  height: 240px;
 }
