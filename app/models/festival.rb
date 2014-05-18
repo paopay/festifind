@@ -3,7 +3,6 @@ class Festival < ActiveRecord::Base
 
  	has_and_belongs_to_many :artists
 
-
   require 'httparty'
   require 'multi_json'
 
