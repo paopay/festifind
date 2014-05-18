@@ -21,12 +21,14 @@ class FestivalsController < ApplicationController
         name = festival.display_name
         desc = festival.city_name
         tracks = []
+
         festival.artists.each do |artist|
-          tracks << festival.get_tracks_list(artist.song_kick_id)
+          p artist
+          tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
         end
         tracks = tracks.join(",")
         playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
-        festival.update_attributes([:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]])
+        festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
         festival.save
       end
       # name = "Hi"
@@ -75,7 +77,7 @@ class FestivalsController < ApplicationController
   def festival_params
   	params.require(:festival).permit(:song_kick_id, :display_name,
     :start_date, :end_date, :city_name, :lat, :lng,
-    :popularity, :url)
+    :popularity, :url, :playlist_url, :icon)
   end
 
   require 'om'
