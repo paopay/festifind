@@ -2,7 +2,7 @@ class FestivalsController < ApplicationController
 
   def index
   	@festivals = Festival.all
-    render json: {festivals: @festivals}
+    # render json: {festivals: @festivals}
   end
 
   def create
