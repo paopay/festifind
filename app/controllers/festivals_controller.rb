@@ -60,7 +60,7 @@ class FestivalsController < ApplicationController
     # make sure we have everything we need
     if request_token and request_token_secret and verifier
       # exchange the verifier and request token for an access token
-      rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"], 
+      rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],
                       [request_token, request_token_secret])
       rdio.complete_authentication(verifier)
       # save the access token in cookies (and discard the request token)
@@ -127,7 +127,8 @@ class FestivalsController < ApplicationController
       return JSON.load(signed_post('http://api.rdio.com/1/', params))
     end
 
-    private
+  private
+
     def signed_post(url, params)
       auth = om(@consumer, url, params, @token)
       url = URI.parse(url)
@@ -137,7 +138,7 @@ class FestivalsController < ApplicationController
       res = http.request(req)
       return res.body
     end
-    
+
     def method_missing(method, *params)
       call(method.to_s, params[0])
     end
