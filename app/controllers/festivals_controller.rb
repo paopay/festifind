@@ -1,4 +1,5 @@
 class FestivalsController < ApplicationController
+
   def index
   	@festivals = Festival.all
     render json: {festivals: @festivals}
@@ -7,7 +8,6 @@ class FestivalsController < ApplicationController
   def create
   	Festival.create(festival_params)
   end
-
 
 
   private
