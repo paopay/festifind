@@ -2,6 +2,9 @@ class FestivalsController < ApplicationController
 
   def index
   	@festivals = Festival.all
+    @festivals.to_a.sort_by! do |festival|
+      festival.start_date
+    end
   end
 
   def create
