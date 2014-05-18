@@ -1,38 +1,7 @@
-
-task get_info: :environment do
-	json_list = Songkick.fetch_festival_ids
-	# p json_list
-	# p '+'*20
-	# json_list.each do |festival_json|
-	# 	p festival_json
-	# 	make_festivals(festival_json)
-	# end
-end
-
-def make_festivals(json_response)
-
-	event = json_response["resultsPage"]["results"]["event"]
-	_festival = Festival.create(song_kick_id: event["id"],
-									popularity: event["popularity"],
-									display_name: event["displayName"],
-									start_date: event["start"]["date"],
-									end_date: event["end"]["date"],
-									lat: event["location"]["lat"],
-									lng: event["location"]["lng"],
-									city_name: event["location"]["city"],
-									url: event["uri"])
-
-	p event["performance"]
-	event["performance"].each do |artist|
-		_festival.artists.create(song_kick_id: artist["id"], display_name: artist["displayName"])
-	end
-end
-
 module Songkick
 
 	require 'net/http'
 	require 'nokogiri'
-	require 'json'
 
 
 	def self.pull_id(listing)
@@ -47,17 +16,32 @@ module Songkick
 		  p.fetch!
 		  master_array.concat(p.links)
 		end
-		json_array = master_array.map do |id|
+		master_array.each do |id|
 			Songkick.fetch_festival_info(id)
 		end
-		json_array
 	end
 
 	def self.fetch_festival_info(id)
 		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=XeBZx90YoQLiJG0M")
-		json_response = Net::HTTP.get(query_url)
-		p json_response
-		make_festivals(JSON.parse(json_response))
+		Net::HTTP.get(query_url)
+		Songkick.makeFestivals(query_url)
+	end
+
+	def self.makeFestivals(event)
+		event = ["resultsPage"]["results"]["event"]
+		Festival.create(song_kick_id: event["id"],
+										popularity: event["popularity"],
+										display_name: event["displayName"],
+										start_date: event["start"]["date"],
+										end_date: event["end"]["date"],
+										lat: event["location"]["lat"],
+										lng: event["location"]["lng"],
+										city_name: event["location"]["city"],
+										url: event["uri"])
+
+		event["performances"].each do |artist|
+			Artist.create(song_kick_id: artist["id"], display_name: artist["displayName"])
+		end
 	end
 
 
@@ -83,4 +67,5 @@ module Songkick
 	    return_array.uniq
 	  end
 	end
+
 end
