@@ -21,8 +21,6 @@ class Festival < ActiveRecord::Base
     tracks = Array.new
     json = get_track_json(songkick_artist_id)
 
-    p json["response"]["songs"]
-    p "hi" * 40
     if json["response"]["songs"] != nil
       for track in json["response"]["songs"]
         rdio_id = track["tracks"].first["foreign_id"]
