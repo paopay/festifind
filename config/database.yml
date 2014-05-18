@@ -6,11 +6,11 @@ default: &default
 
 development:
   <<: *default
-  database: festifind.development
+  database: festifind_development
 
 test:
   <<: *default
-  database: festifind.test
+  database: festifind_test
 
 production:
   <<: *default

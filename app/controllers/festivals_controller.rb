@@ -1,10 +1,20 @@
-class HomeController < ApplicationController
+class FestivalsController < ApplicationController
   def index
-  	if params[:location]
-  		@festivals = Festival.all
-  	else
-  		@festivals = Festival.all
-  	end
+  	@festivals = Festival.all
     render json: {festivals: @festivals}
+  end
+
+  def create
+  	Festival.create(festival_params)
+  end
+
+
+
+  private
+
+  def festival_params
+  	params.require(:festival).permit(:song_kick_id, :display_name,
+    :start_date, :end_date, :city_name, :lat, :lng,
+    :popularity, :url)
   end
 end
