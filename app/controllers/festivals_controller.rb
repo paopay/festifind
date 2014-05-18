@@ -77,7 +77,7 @@ class FestivalsController < ApplicationController
   def festival_params
   	params.require(:festival).permit(:song_kick_id, :display_name,
     :start_date, :end_date, :city_name, :lat, :lng,
-    :popularity, :url, :playlist_url, :icon)
+    :popularity, :url, :playlist_url, :icon, :fest_icon)
   end
 
   require 'om'
