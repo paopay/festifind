@@ -3,7 +3,6 @@ class Festival < ActiveRecord::Base
 
  	has_and_belongs_to_many :artists
 
-
   require 'httparty'
   require 'multi_json'
 
@@ -22,11 +21,14 @@ class Festival < ActiveRecord::Base
     tracks = Array.new
     json = get_track_json(songkick_artist_id)
 
-    for track in json["response"]["songs"]
-      rdio_id = track["tracks"].first["foreign_id"]
-      tracks << rdio_id.gsub(/rdio\-US:track:/, "")
+    p json["response"]["songs"]
+    p "hi" * 40
+    if json["response"]["songs"] != nil
+      for track in json["response"]["songs"]
+        rdio_id = track["tracks"].first["foreign_id"]
+        tracks << rdio_id.gsub(/rdio\-US:track:/, "")
+      end
     end
-
     return tracks
   end
 end

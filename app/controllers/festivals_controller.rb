@@ -2,7 +2,6 @@ class FestivalsController < ApplicationController
 
   def index
   	@festivals = Festival.all
-    # render json: {festivals: @festivals}
   end
 
   def create
@@ -22,12 +21,14 @@ class FestivalsController < ApplicationController
         name = festival.display_name
         desc = festival.city_name
         tracks = []
+
         festival.artists.each do |artist|
-          tracks << festival.get_tracks_list(artist.song_kick_id)
+          p artist
+          tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
         end
         tracks = tracks.join(",")
         playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
-        festival.update_attributes([:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]])
+        festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
         festival.save
       end
       # name = "Hi"
@@ -59,7 +60,7 @@ class FestivalsController < ApplicationController
     # make sure we have everything we need
     if request_token and request_token_secret and verifier
       # exchange the verifier and request token for an access token
-      rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"], 
+      rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],
                       [request_token, request_token_secret])
       rdio.complete_authentication(verifier)
       # save the access token in cookies (and discard the request token)
@@ -76,7 +77,7 @@ class FestivalsController < ApplicationController
   def festival_params
   	params.require(:festival).permit(:song_kick_id, :display_name,
     :start_date, :end_date, :city_name, :lat, :lng,
-    :popularity, :url)
+    :popularity, :url, :playlist_url, :icon)
   end
 
   require 'om'
@@ -126,7 +127,8 @@ class FestivalsController < ApplicationController
       return JSON.load(signed_post('http://api.rdio.com/1/', params))
     end
 
-    private
+  private
+
     def signed_post(url, params)
       auth = om(@consumer, url, params, @token)
       url = URI.parse(url)
@@ -136,7 +138,7 @@ class FestivalsController < ApplicationController
       res = http.request(req)
       return res.body
     end
-    
+
     def method_missing(method, *params)
       call(method.to_s, params[0])
     end

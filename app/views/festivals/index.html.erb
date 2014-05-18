@@ -1,9 +1,6 @@
-<%@festivals.each do |festival|%>
-	<ul>
-	<li><%=festival.display_name%></li>
-	<li><%=festival.city_name%></li>
-	<li><%=festival.start_date%></li>
-	<li><%=festival.icon%></li>
-	<li><%=festival.playlist_url%></li>
-	</ul>
-<%end%>
+<div id="header">FestiFind</div>
+<div id="grid">
+  <% @festivals.each do |festival| %>
+    <%= render partial: "festival", locals: { festival: festival } %>
+  <% end %>
+</div>
