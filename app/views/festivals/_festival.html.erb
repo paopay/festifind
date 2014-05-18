@@ -1,7 +1,8 @@
-<div class="block">
-  <%= festival.display_name %>
-  <%= festival.city_name %>
-  <%= festival.start_date %>
+<div
+    class="block"
+    data-name="<%= festival.display_name %>"
+    data-city="<%= festival.city_name %>"
+    data-date="<%= festival.start_date %>"
+    data-playlist="<%= festival.playlist_url %>">
   <img src="<%= festival.icon %>">
-  <%= festival.playlist_url %>
 </div>
