@@ -24,7 +24,7 @@ def make_festivals(json_response)
 
 	p event["performance"]
 	event["performance"].each do |artist|
-		_festival.artists.create(song_kick_id: artist["id"], display_name: artist["displayName"])
+		_festival.artists.create(song_kick_id: artist["artist"]["id"], display_name: artist["displayName"])
 	end
 end
 
@@ -56,7 +56,6 @@ module Songkick
 	def self.fetch_festival_info(id)
 		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=XeBZx90YoQLiJG0M")
 		json_response = Net::HTTP.get(query_url)
-		p json_response
 		make_festivals(JSON.parse(json_response))
 	end
 
