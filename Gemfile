@@ -42,6 +42,9 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'httparty'
 gem 'json'
 
+# Needed for the nokogiri fesitval ID scraping, son!
+gem 'nokogiri'
+
 group :development, :test do
   gem 'rspec-rails'
 end
