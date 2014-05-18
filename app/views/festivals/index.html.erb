@@ -1,7 +1,9 @@
 <%@festivals.each do |festival|%>
-	<%=festival.display_name%>
-	<%=festival.city%>
-	<%=festival.start_date%>
-	<%=festival.icon%>
-	<%=festival.playlist_url%>
+	<ul>
+		<h3><%=festival.display_name%></h3>
+		<li><%=festival.city_name%></li>
+		<li><%=festival.start_date%></li>
+		<li><%=festival.icon%></li>
+		<li><%=festival.playlist_url%></li>
+	</ul>
 <%end%>
