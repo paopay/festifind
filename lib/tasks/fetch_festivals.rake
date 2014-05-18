@@ -20,7 +20,8 @@ def make_festivals(json_response)
 									lat: event["location"]["lat"],
 									lng: event["location"]["lng"],
 									city_name: event["location"]["city"],
-									url: event["uri"])
+									url: event["uri"],
+									fest_icon: "http://www2.sk-static.com/images/media/profile_images/events/#{event["id"]}/col4")
 
 	p event["performance"]
 	event["performance"].each do |artist|
