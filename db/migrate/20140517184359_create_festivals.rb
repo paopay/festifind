@@ -10,6 +10,8 @@ class CreateFestivals < ActiveRecord::Migration
     	t.float :lng
     	t.float	:popularity
     	t.string :url
+        t.string :playlist_url
+        t.string :icon
     	t.timestamps
     end
   end
