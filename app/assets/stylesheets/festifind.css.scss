@@ -1,21 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-
+$main-color: #e67e22;
+@mixin rounded-corners {
+  border-radius: 10px;
+}
 body {
   font-size: 12px;
-  background-color: #e67e22;
+  background-color: $main-color;
   color: black;
 }
 #header_bar {
-    background-color:white;
+    background-color:lighten($main-color,20%);
     margin-bottom: 20px;
-}
-#header {
-  font-family: 'Kaushan Script', cursive;
-  font-size: 500%;
-  text-align: center;
-  padding: 10px;
-}
 
+  #header_text {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 500%;
+    text-align: center;
+    padding: 10px;
+  }
+}
 #grid {
   margin: 0 auto;
   text-align: center;
@@ -34,7 +37,7 @@ body {
   width: 300px;
   display: inline-table;
   background-color: #ecf0f1;
-  border-radius: 10px;
+  @include rounded_corners;
   margin: 1px;
   padding: 2px;
 
