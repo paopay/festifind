@@ -31,11 +31,11 @@ var ProjectView = function(projectModel){
 ProjectView.prototype = {
   removeLink : function(e){
     console.log("hi")
-    $(e.currentTarget)[0].remove()
-    
+    // $(e.currentTarget)[0].remove()
+
   },
   update: function(){
-    $('#explore').remove();
+    $('#explore').hide();
     $('#show_favs').show()
     $('#each_festival').html(this.projectModel.favorites)
   }

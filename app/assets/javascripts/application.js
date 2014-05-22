@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require jquery.flip.min
 //= require_tree .
+//= require handlebars.runtime
