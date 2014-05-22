@@ -35,7 +35,6 @@ body {
 .block {
   height: 300px;
   width: 300px;
-  display: inline-table;
   background-color: #ecf0f1;
   @include rounded_corners;
   margin: 1px;
@@ -45,21 +44,45 @@ body {
 
 .image {
   display: table-cell;
+  height:300px;
+  width:300px;
 }
 
 .info {
   display: none;
 }
-
-.festival-icon {
-  max-width: 290px;
-  max-height: 290px;
+#javascript_box{
+  height:150px;
+  background-color:white;
+  border:1px solid black;
 }
+.festival-icon {
+  max-width: 100%;
+  height: 300px;
 
+}
+.fav_text {
+  color:$main-color;
+  font-size: 2em;
+}
 .playlist {
   padding-top: 10px;
 }
 
 .playlist-object {
   height: 240px;
+}
+.square{
+  height:375px;
+  width:325px;
+  display:inline-block;
+  margin:0;
+}
+.favorite{
+  display:block;
+  background-color:white;
+  height:50px;
+  width:220px;
+  text-align: center;
+  margin: auto;
 }

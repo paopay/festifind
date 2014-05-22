@@ -6,11 +6,14 @@ $(document).ready(function() {
       $(this).flip({
         direction:'lr',
         speed: 300
-      });
+      })
 
-      $(this).find(".image").css("display", "none");
-      $(this).find(".info").css("display", "table-cell");
+      $(this).find(".image").css("display", "none")
+      $(this).find(".info").css("display", "table-cell")
     }
-  });
+  })
+  $(".fav_link").click(function(){
+    console.log("hi")
+  })
 
-});
+})
