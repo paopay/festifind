@@ -64,7 +64,19 @@ body {
 .fav_text {
   color:$main-color;
   font-size: 2em;
+
 }
+#explore, #show_favs {
+  color:$main-color;
+  font-size:4em;
+}
+#show_favs{
+  display:none;
+  #each_festival {
+  font-size:.5em;
+}
+}
+
 .playlist {
   padding-top: 10px;
 }

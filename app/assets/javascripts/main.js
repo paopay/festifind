@@ -29,9 +29,15 @@ var ProjectView = function(projectModel){
 }
 
 ProjectView.prototype = {
-  update: function(){
+  removeLink : function(e){
+    console.log("hi")
+    $(e.currentTarget)[0].remove()
     
-    $('#javascript_box').html(this.projectModel.favorites)
+  },
+  update: function(){
+    $('#explore').remove();
+    $('#show_favs').show()
+    $('#each_festival').html(this.projectModel.favorites)
   }
 }
 
@@ -62,6 +68,7 @@ ProjectController.prototype = {
     e.preventDefault();
     this.projectModel.addFestivalToModel(e);
     this.projectView.update()
+    this.projectView.removeLink(e)
   }
 }
 
