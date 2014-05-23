@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars-v1.3.0
 //= require turbolinks
 //= require jquery.flip.min
 //= require_tree .
-//= require handlebars.runtime

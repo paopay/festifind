@@ -6,6 +6,12 @@
 
 
 $(document).ready(function() {
+   
+
+
+
+
+
 projectModel = new ProjectModel
 projectView = new ProjectView(projectModel)
 projectController = new ProjectController(projectView,projectModel)
@@ -35,10 +41,16 @@ ProjectView.prototype = {
 
   },
   update: function(){
+    console.log("WTFFF")
     $('#explore').hide();
     $('#show_favs').show()
-    $('#each_festival').html(this.projectModel.favorites)
-  }
+     var source   = $("#some-template").html();
+    var template = Handlebars.compile(source);
+    $('#each_festival').empty()
+    for (x=0;x<this.projectModel.favorites.length;x++) {
+      $('#each_festival').append("<b>"+this.projectModel.favorites[x]+"</b><br>")
+    }
+  }  
 }
 
 
