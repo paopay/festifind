@@ -7,7 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<script id="some-template" type="text/x-handlebars-template">
+  <table>
+    <thead>
+      <th>Festival Name</th>
+    </thead>
+    <tbody>
+      // {{#each this.projectModel.favorites}}
+        <tr>
+          <td>{{me
+          }}</td>
+        </tr>
+        <br>
+      // {{/each}}
+    </tbody>
+  </table>
+</script>
 <%= yield %>
 
 </body>
