@@ -12,7 +12,7 @@ var getArtists = (function(){
     var template = Handlebars.compile(source);
     var handleData = artistsJSONObject
 
-    $("#artists_module").show();
+    $(".artists_module").show();
   $("#content-placeholder").html(template(handleData));   
     })
     }
