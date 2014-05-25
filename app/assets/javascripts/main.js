@@ -1,22 +1,19 @@
 var getArtists = (function(){
   return {
-    finder: function(){
+    finder: function(clickedFestival){
       $.ajax({
       url: '/artists/find',
-      data: {festival:'California Roots Festival 2014'},
+      data: {festival:clickedFestival},
       type: 'GET'
     })
-    .done(function(data){
-      console.log(data)
+    .done(function(data){  
+      artistsJSONObject = data.artists
       var source   = $("#some-template").html();
     var template = Handlebars.compile(source);
-    var data = { users: [
-      {username: "alan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com" },
-      {username: "allison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
-      {username: "ryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
-    ]};
-  $("#content-placeholder").html(template(data));
-      
+    var handleData = artistsJSONObject
+    debugger;
+    $(".fav_arists_box").show();
+  $("#content-placeholder").html(template(handleData));   
     })
     }
   }
@@ -30,8 +27,6 @@ var getArtists = (function(){
 $(document).ready(function() {
    
 
-
-getArtists.finder()
 
 
 
@@ -65,11 +60,11 @@ ProjectView.prototype = {
   },
   update: function(){
     console.log("WTFFF")
-    $('#explore').hide();
+    $('.explore').hide();
     $('#show_favs').show()
     $('#each_festival').empty()
-    for (x=0;x<this.projectModel.favorites.length;x++) {
-      $('#each_festival').append("<span class='greg'>"+this.projectModel.favorites[x]+"</span><br>")
+    for (x=0;x<this.projectModel.favoriteFestivals.length;x++) {
+      $('#each_festival').append("<span class='greg'>"+this.projectModel.favoriteFestivals[x]+"</span><br>")
     }
   }  
 }
@@ -78,17 +73,22 @@ var projectModule = (function(){
 })
 
 var ProjectModel = function(){
-  this.favorites = []
+  this.favoriteFestivals = []
+  this.allFestivalArtists = []
 }
 
 ProjectModel.prototype = {
   addFestivalToModel : function(e){
     update = $(e.target)
     object = $(e.target).data('val')
-    this.favorites.push(object)
+    this.favoriteFestivals.push(object)
   },
   getArtistsFromDB : function(e){
-    console.log("gettingartists")
+    clickedHTML = $(e.target)[0]
+    clickedFestival = $(clickedHTML).html()
+    
+    getArtists.finder(clickedFestival)
+
   }
 }
 
@@ -102,6 +102,7 @@ ProjectController.prototype = {
   bindListeners : function(){
     $('.fav_text').on('click',this.addFestival.bind(this))
     $(document).on('click','.greg',this.getArtists.bind(this))
+
   },
   addFestival: function(e){
     e.preventDefault();
@@ -110,7 +111,8 @@ ProjectController.prototype = {
     this.projectView.removeLink(e)
   },
   getArtists: function(e){
-    this.projectModel.getArtistsFromDB()
+
+    this.projectModel.getArtistsFromDB(e)
   }
 }
 

@@ -103,10 +103,22 @@ body {
 .info {
   display: none;
 }
-#javascript_box{
+#festivals_box{
   background-color:white;
   border:1px solid black;
   margin-bottom:50px;
+  width:500px;
+  margin-right: auto;
+margin-left: auto;
+}
+.fav_arists_box {
+  background-color:white;
+  border:1px solid black;
+  margin-bottom:50px;
+  width:500px;
+  margin-right: auto;
+margin-left: auto;
+display:none;
 }
 .festival-icon {
   max-width: 100%;
@@ -118,9 +130,12 @@ body {
   font-size: 2em;
 
 }
-#explore, #show_favs {
+.explore, #show_favs {
   color:$main-color;
   font-size:4em;
+  .no_favs {
+  font-size:.5em;
+  }
 }
 #show_favs{
   display:none;
