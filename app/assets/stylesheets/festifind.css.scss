@@ -107,18 +107,28 @@ body {
   background-color:white;
   border:1px solid black;
   margin-bottom:50px;
-  width:500px;
+  width:600px;
   margin-right: auto;
 margin-left: auto;
 }
-.fav_arists_box {
-  background-color:white;
-  border:1px solid black;
-  margin-bottom:50px;
-  width:500px;
-  margin-right: auto;
+#artists_module{
+  display:none;
+}
+.festival_name {
+  width: 400px;
+display: inline-block;
+}
+.fav_arists_box{
+  background-color: white;
+border: 1px solid black;
+margin-bottom: 50px;
+width: 500px;
+margin-right: auto;
 margin-left: auto;
-display:none;
+color: #e67e22;
+font-size: 2em;
+height: 300px;
+overflow: auto;
 }
 .festival-icon {
   max-width: 100%;
@@ -130,10 +140,10 @@ display:none;
   font-size: 2em;
 
 }
-.explore, #show_favs {
+.explore, #show_favs  {
   color:$main-color;
   font-size:4em;
-  .no_favs {
+  .no_favs,.fav_artists_box{
   font-size:.5em;
   }
 }
@@ -147,7 +157,9 @@ display:none;
 .playlist {
   padding-top: 10px;
 }
-
+.each_festival {
+  display:none;
+}
 .playlist-object {
   height: 240px;
 }

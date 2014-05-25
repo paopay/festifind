@@ -11,8 +11,8 @@ var getArtists = (function(){
       var source   = $("#some-template").html();
     var template = Handlebars.compile(source);
     var handleData = artistsJSONObject
-    debugger;
-    $(".fav_arists_box").show();
+
+    $("#artists_module").show();
   $("#content-placeholder").html(template(handleData));   
     })
     }
@@ -64,7 +64,7 @@ ProjectView.prototype = {
     $('#show_favs').show()
     $('#each_festival').empty()
     for (x=0;x<this.projectModel.favoriteFestivals.length;x++) {
-      $('#each_festival').append("<span class='greg'>"+this.projectModel.favoriteFestivals[x]+"</span><br>")
+      $('#each_festival').append("<span class='festival_name'>"+this.projectModel.favoriteFestivals[x]+"</span><a class='favs greg' href='#' data-name='"+this.projectModel.favoriteFestivals[x]+"'> Build my lineup</a><br>")
     }
   }  
 }
@@ -85,7 +85,7 @@ ProjectModel.prototype = {
   },
   getArtistsFromDB : function(e){
     clickedHTML = $(e.target)[0]
-    clickedFestival = $(clickedHTML).html()
+    clickedFestival = clickedHTML.dataset.name
     
     getArtists.finder(clickedFestival)
 
@@ -111,7 +111,7 @@ ProjectController.prototype = {
     this.projectView.removeLink(e)
   },
   getArtists: function(e){
-
+    e.preventDefault()
     this.projectModel.getArtistsFromDB(e)
   }
 }
