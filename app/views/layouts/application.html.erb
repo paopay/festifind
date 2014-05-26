@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Festifind</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,21 +10,14 @@
 <body>
 <script id="some-template" type="text/x-handlebars-template">
   <table>
-    <thead>
-      <th>Festival Name</th>
-    </thead>
-    <tbody>
-      // {{#each this.projectModel.favorites}}
+      {{#each this}}
         <tr>
-          <td>{{me
-          }}</td>
+          <td>{{display_name}}</td>
         </tr>
-        <br>
-      // {{/each}}
-    </tbody>
+      {{/each}}  
   </table>
 </script>
 <%= yield %>
-
+<span class="festival_choice"><h6 class="greg"></h6></span>
 </body>
 </html>
