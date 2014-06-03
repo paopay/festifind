@@ -1,6 +1,7 @@
 class FestivalsController < ApplicationController
 
   def index
+    p "it works?"
   	@festivals = Festival.all
     @festivals.to_a.sort_by! do |festival|
       festival.start_date
@@ -14,26 +15,40 @@ class FestivalsController < ApplicationController
   # Although hacky, you would just call the login route manually,
   # to create playlists
   def playlists
-    p "playlists" * 1000
     access_token = session[:at]
     access_token_secret = session[:ats]
     if access_token and access_token_secret
       rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
       currentUser = rdio.call('currentUser')['result']
-      Festival.all.each do |festival|
-        name = festival.display_name
-        desc = festival.city_name
-        tracks = []
+      p  "hiiii"
+      play = rdio.call('getPlaylists')
+            play["result"]["owned"].each do |festival|
+              p festival["embedUrl"]
+              p "okkkk"
 
-        festival.artists.each do |artist|
-          p artist
-          tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
-        end
-        tracks = tracks.join(",")
-        playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
-        festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
-        festival.save
-      end
+          end
+          # p  playl
+          #  p "%%" * 50
+          # end
+      # Festival.all.each do |festival|
+      #   name = festival.display_name
+      #   desc = festival.city_name
+      #   tracks = []
+        # p festival.display_name
+        # p festival
+        # p "*" * 50
+
+        # festival.artists.each do |artist|
+        #   p artist
+        #   tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
+        # end
+        # tracks = tracks.join(",")
+         # playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
+         
+
+        # festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
+        # festival.save
+      # end
       # name = "Hi"
       # desc = "Yoooo"
       # tracks = []

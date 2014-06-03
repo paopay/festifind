@@ -1,6 +1,27 @@
-<div id="header">FestiFind</div>
+
+<div id="header_bar">
+	<div id="header_text">FestiFind</div>
+</div>
+<div id="festivals_box">
+	<div class="explore">Your Favorite Fesitvals:<div class="no_favs">...You have no favorites, explore below to find festivals</div>
+</div>
+	<div id="show_favs">Your Favorite Fesitvals:
+		<div id="each_festival"></div>
+	</div>
+
+</div>
+<div class="artists_module">
+  <div class="fav_arists_box">
+    <div id="content-placeholder"></div>
+  </div>
+</div>
 <div id="grid">
   <% @festivals.each do |festival| %>
-    <%= render partial: "festival", locals: { festival: festival } %>
+    <div class="square">
+    	<%= render partial: "festival", locals: { festival: festival } %>
+    	<div class="favorite">
+    		<span class="fav_text"><a class="favs" href="" data-val="<%=festival.display_name%>">add to favorite</a></span>
+    	</div>
+	</div>
   <% end %>
 </div>
