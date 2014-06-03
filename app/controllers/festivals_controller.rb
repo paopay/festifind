@@ -8,6 +8,11 @@ class FestivalsController < ApplicationController
     end
   end
 
+  def show
+    vid_id = "ENXvZ9YRjbo"
+    @vid_src = "http://www.youtube.com/embed/" + vid_id
+  end
+
   def create
   	Festival.create(festival_params)
   end
@@ -41,6 +46,7 @@ class FestivalsController < ApplicationController
         # festival.artists.each do |artist|
         #   p artist
         #   tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
+        # artist.update_attribute(:top_track, tracks.first)
         # end
         # tracks = tracks.join(",")
          # playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
