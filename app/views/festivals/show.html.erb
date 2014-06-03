@@ -1,11 +1,14 @@
-<%= @festival.display_name %>
 
-<div class="artists_module">
-  <div class="fav_arists_box">
-    <div id="content-placeholder">
-    <%= @festival.artists do |t| %>
-    <%= t.display_name %>
-    <% end %>
-    </div>
+<div id="festivals_box">
+ <div class="explore">
+    <%= @festival.display_name %>
   </div>
+</div>
+<div class="fav_arists_box">
+	<div id="content-placeholder">
+<% @artists.each do |t| %>
+    <%= t.display_name %>
+    <br>
+    <% end %>
+	</div>
 </div>
