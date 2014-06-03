@@ -19,24 +19,13 @@ var getArtists = (function(){
   }
 })();
 
-
-
-
-
-
 $(document).ready(function() {
-   
-
-
-
-
 projectModel = new ProjectModel
 projectView = new ProjectView(projectModel)
 projectController = new ProjectController(projectView,projectModel)
 projectController.bindListeners()
   $("#grid").on("click", ".block", function(e) {
     if ($(this).find(".image").css("display") != "none") {
-
       $(this).flip({
         direction:'lr',
         speed: 300
