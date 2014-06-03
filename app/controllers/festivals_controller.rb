@@ -7,6 +7,10 @@ class FestivalsController < ApplicationController
       festival.start_date
     end
   end
+  def show
+    @festival = Festival.find params[:id]
+    
+  end
 
   def create
   	Festival.create(festival_params)
