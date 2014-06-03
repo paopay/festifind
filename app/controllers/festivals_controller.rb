@@ -94,7 +94,7 @@ class FestivalsController < ApplicationController
     attr_accessor :consumer, :token
 
     def initialize(consumer, token=nil)
-      @consumer = consumer
+      @consumer = consumer 
       @token = token
     end
 
