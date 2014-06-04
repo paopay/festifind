@@ -3,18 +3,40 @@ $main-color: #3CC3C3;
 @mixin rounded-corners {
   border-radius: 10px;
 }
-
+@mixin band-name-info {
+  color:#594E23;
+  font-family:Arial;
+  font-size:20px;
+  font-weight:bold;
+  font-style:normal;
+  display:inline;
+  height:28px;
+  line-height:28px;
+  text-decoration:none;
+}
+@mixin basic-seperators{
+  margin-bottom: 20px;
+    text-align: center;
+}
 body {
   font-size: 12px;
   background-color: $main-color;
   color: black;
 }
 
-#header_bar {
-    background-color:lighten($main-color,20%);
+.date,.popularity,.distance,.random,.filters{
     margin-bottom: 20px;
     text-align: center;
+    @include basic-seperators;
+    color:#594E23;
+  font-family:Arial;
+  font-size:20px;
+  font-weight:bold;
+}
 
+#header_bar {
+    background-color:lighten($main-color,20%);
+  @include basic-seperators    
 }
 .band_name{
   display:inline;
@@ -28,6 +50,7 @@ body {
   background-color: white;
   border: 1px solid black;
   margin-bottom: 50px;
+  text-align:left;
 }
 .fav_arists_box{
 margin-right: auto;
@@ -87,24 +110,21 @@ text-align: center;
   height:300px;
   width:300px;
 }
-.listen{
+
+a.listen{
   float:right;
+  @include band-name-info;
+}
+a.listen:hover{
+  border-bottom:2px solid #594E23;
 }
 .favs a,.favs{
-  display:inline;
+  @include band-name-info;
   margin:5px;
   text-indent:0;
-  color:#594E23;
-  font-family:Arial;
-  font-size:15px;
-  font-weight:bold;
-  font-style:normal;
-  height:28px;
-  line-height:28px;
   width:150px;
   text-decoration:none;
-  text-align:center;
-  
+  text-align:center; 
 }
 .favs:hover {
   
@@ -117,6 +137,9 @@ text-align: center;
 .info {
   display: none;
 }
+#festivals_box {
+  display:none;
+}
 #festivals_box,.artists_box {
   background-color:white;
   border:1px solid black;
@@ -124,6 +147,7 @@ text-align: center;
   width:1000px;
   margin-right: auto;
 margin-left: auto;
+
 }
 .artists_module{
   display:none;
