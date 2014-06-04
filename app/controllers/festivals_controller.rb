@@ -21,13 +21,10 @@ class FestivalsController < ApplicationController
     if access_token and access_token_secret
       rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
       currentUser = rdio.call('currentUser')['result']
-      p  "hiiii"
       play = rdio.call('getPlaylists')
-            play["result"]["owned"].each do |festival|
-              p festival["embedUrl"]
-              p "okkkk"
-
-          end
+      play["result"]["owned"].each do |festival|
+        p festival["embedUrl"]
+      end
           # p  playl
           #  p "%%" * 50
           # end
