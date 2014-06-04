@@ -1,18 +1,3 @@
-//Example festival array
-festivals_array = []
-
-var festival1 = {lat:38.7822554, lng:-122.391244} 
-var festival2 = {lat:36.45, lng:-122.43}
-var festival5 = {lat:45.45, lng:-142.43}
-var festival3 = {lat:39.45, lng:-102.43}
-var festival4 = {lat:49.45, lng:-62.43}
- 
-festivals_array.push(festival4)
-festivals_array.push(festival1)
-festivals_array.push(festival3)
-festivals_array.push(festival2)
-festivals_array.push(festival5)
-
 //Get distance from user to festival
 var rad = function(x) {
   return x * Math.PI / 180;
@@ -32,6 +17,3 @@ var getDistance = function(user, festival) {
 
 user = {}
 navigator.geolocation.getCurrentPosition(function(position){user.lat = position.coords.latitude, user.lng = position.coords.longitude})
-festival
-
-festivals_array.sort(function(a,b){return getDistance(user,a)-getDistance(user,b)}

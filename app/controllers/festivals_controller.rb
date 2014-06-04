@@ -1,7 +1,6 @@
 class FestivalsController < ApplicationController
 
   def index
-    p "it works?"
   	@festivals = Festival.all
     @festivals.to_a.sort_by! do |festival|
       festival.start_date
@@ -14,6 +13,14 @@ class FestivalsController < ApplicationController
 
   def create
   	Festival.create(festival_params)
+  end
+
+  def sort
+    festivals = Festival.all
+    festivals.to_a.sort_by! do |festival|
+      festival.start_date
+    end
+    render :json => {:result => festivals}
   end
 
   # Although hacky, you would just call the login route manually,

@@ -1,7 +1,10 @@
-
-
 <div class="block">
-  <div class="image"><img class="festival-icon"  src="<%= festival.fest_icon %>"></div>
+	<%if festival.fest_icon == nil%>
+  	<div class="image"><img class="festival-icon"  src="<%= festival.icon %>"></div>
+  	<%else%>
+  	<div class="image"><img class="festival-icon"  src="<%= festival.fest_icon %>"></div>
+  	<%end%>
+  	<% puts "hi" %>
   <div class="info">
     <div class="name"><%= festival.display_name %></div>
     <div class="city"><%= festival.city_name %></div>
