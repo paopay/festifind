@@ -5,7 +5,7 @@ class FestivalsController < ApplicationController
   end
 
   def show
-    vid_id = "ENXvZ9YRjbo"
+    vid_id = "rJYcmq__nDM"
     @vid_src = "http://www.youtube.com/embed/" + vid_id
   end
 
