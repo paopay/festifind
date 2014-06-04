@@ -26,9 +26,10 @@
     <div class="square">
     	<%= render partial: "festival", locals: { festival: festival } %>
     	<div class="favorite">
-    		<span class="fav_text"><a class="favs" href="" data-val="<%=festival.display_name%>">add to favorite</a></span>
+    		<span class="fav_text"><a class="favs" href="" data-val="<%=festival.display_name%>">Add to Favorite</a></span>
+        <span class="favs">
         <%= link_to 'Show',[festival] %>
-
+      </span>
     	</div>
 	  </div>
   <% end %>
