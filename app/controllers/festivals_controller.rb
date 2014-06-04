@@ -7,8 +7,6 @@ class FestivalsController < ApplicationController
   def show
     vid_id = "rJYcmq__nDM"
     @vid_src = "http://www.youtube.com/embed/" + vid_id
-  end
-  def show
     @festival = Festival.find params[:id]
     @artists = @festival.artists
   end
