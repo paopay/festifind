@@ -46,7 +46,7 @@ gem 'json'
 gem 'nokogiri'
 
 group :development, :test do
-  gem 'rspec-rails'
+    gem 'rspec-rails', '~> 3.0.0.beta'
 end
 
 group :test do

@@ -1,7 +1,4 @@
-
-<div id="header_bar">
-	<div id="header_text">FestiFind</div>
-</div>
+<%= render partial: "header" %>
 <div id="festivals_box">
 	<div class="explore">Your Favorite Fesitvals:<div class="no_favs">...You have no favorites, explore below to find festivals</div>
 </div>
@@ -21,6 +18,8 @@
     	<%= render partial: "festival", locals: { festival: festival } %>
     	<div class="favorite">
     		<span class="fav_text"><a class="favs" href="" data-val="<%=festival.display_name%>">add to favorite</a></span>
+        <%= link_to 'Show',[festival] %>
+
     	</div>
 	</div>
   <% end %>
