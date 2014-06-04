@@ -100,6 +100,11 @@ ProjectController.prototype = {
     $('.popularity').on('click', this.sortFestbyPopularity.bind(this))
     $('.date').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
+    $('.my_favs').on('click', this.showFavs)
+  },
+  showFavs:function(e){
+    console.log("hii")
+    $('#festivals_box').show();
   },
   addFestival: function(e){
     e.preventDefault();
@@ -107,6 +112,7 @@ ProjectController.prototype = {
     this.projectView.update()
     this.projectView.removeLink(e)
   },
+
   getArtists: function(e){
     e.preventDefault()
     this.projectModel.getArtistsFromDB(e)

@@ -1,4 +1,3 @@
-<%= render "youtube_vid" %>
 
  <div class="explore">
     <%= @festival.display_name %>
@@ -10,12 +9,14 @@
 	<% @artists.each do |t| %>
 	    <div class="artist_row">
 	    <span class="band_name"><%= t.display_name %></span>
-	    <a class="listen favs" href="" data-val="<%=t.display_name%>">Listen</a>
+	    <a class="listen" href="" data-val="<%=t.display_name%>">Listen</a>
 	    </div>	    
     <% end %>
 	</div>
 
 	<div class="content-placeholder">
+		<%= render "youtube_vid" %>
+
 	</div>
 
 </div>
