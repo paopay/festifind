@@ -1,12 +1,12 @@
 class FestivalsController < ApplicationController
 
   def index
-  	@festivals = Festival.all
-    @festivals.to_a.sort_by! do |festival|
-      festival.start_date
-    end
+  	@festivals = Festival.order :start_date
   end
+
   def show
+    vid_id = "rJYcmq__nDM"
+    @vid_src = "http://www.youtube.com/embed/" + vid_id
     @festival = Festival.find params[:id]
     @artists = @festival.artists
   end
@@ -31,13 +31,10 @@ class FestivalsController < ApplicationController
     if access_token and access_token_secret
       rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
       currentUser = rdio.call('currentUser')['result']
-      p  "hiiii"
       play = rdio.call('getPlaylists')
-            play["result"]["owned"].each do |festival|
-              p festival["embedUrl"]
-              p "okkkk"
-
-          end
+      play["result"]["owned"].each do |festival|
+        p festival["embedUrl"]
+      end
           # p  playl
           #  p "%%" * 50
           # end
@@ -52,6 +49,7 @@ class FestivalsController < ApplicationController
         # festival.artists.each do |artist|
         #   p artist
         #   tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
+        # artist.update_attribute(:top_track, tracks.first)
         # end
         # tracks = tracks.join(",")
          # playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
@@ -120,7 +118,7 @@ class FestivalsController < ApplicationController
     attr_accessor :consumer, :token
 
     def initialize(consumer, token=nil)
-      @consumer = consumer
+      @consumer = consumer 
       @token = token
     end
 
