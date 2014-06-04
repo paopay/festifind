@@ -1,11 +1,7 @@
 class FestivalsController < ApplicationController
 
   def index
-    p "it works?"
-  	@festivals = Festival.all
-    @festivals.to_a.sort_by! do |festival|
-      festival.start_date
-    end
+  	@festivals = Festival.order :start_date
   end
 
   def show
