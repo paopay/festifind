@@ -23,53 +23,37 @@ class FestivalsController < ApplicationController
     render :json => {:result => festivals}
   end
 
-  # Although hacky, you would just call the login route manually,
-  # to create playlists
+  # # Although hacky, you would just call the login route manually,
+  # # to create playlists
   def playlists
     access_token = session[:at]
     access_token_secret = session[:ats]
     if access_token and access_token_secret
       rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
       currentUser = rdio.call('currentUser')['result']
-      p  "hiiii"
-      play = rdio.call('getPlaylists')
-            play["result"]["owned"].each do |festival|
-              p festival["embedUrl"]
-              p "okkkk"
-
-          end
-          # p  playl
-          #  p "%%" * 50
-          # end
-      # Festival.all.each do |festival|
-      #   name = festival.display_name
-      #   desc = festival.city_name
-      #   tracks = []
-        # p festival.display_name
-        # p festival
-        # p "*" * 50
-
-        # festival.artists.each do |artist|
-        #   p artist
-        #   tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
-        # end
-        # tracks = tracks.join(",")
-         # playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
-         
-
-        # festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
-        # festival.save
-      # end
-      # name = "Hi"
-      # desc = "Yoooo"
-      # tracks = []
-      # playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => "t45423856, t45423856"})
+      Festival.all.each do |festival|
+        name = festival.display_name
+        desc = festival.city_name
+        tracks = []
+        p festival.display_name
+        p "*" * 50
+        festival.artists.each do |artist|
+          p artist
+          tracks << festival.get_tracks_list(artist.song_kick_id.to_s)
+          artist.update_attribute(:top_track, tracks.first.first)
+        end
+        tracks = tracks.join(",")
+        playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
+        festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
+        festival.save
+      end
+      tracks = []
+      playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => "t45423856, t45423856"})
     end
   end
 
   def login
     #get request tokens
-    p "helooo" * 100
     rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"])
     callback_url = (URI.join request.url, festivals_auth_path).to_s
     url = rdio.begin_authentication(callback_url)
@@ -81,7 +65,6 @@ class FestivalsController < ApplicationController
   end
 
   def auth
-     p "weee" * 100
     # get the state from cookies and the query string
     request_token = session[:rt]
     request_token_secret = session[:rts]
