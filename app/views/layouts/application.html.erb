@@ -38,7 +38,12 @@
           <div class="playlist"><embed class="playlist-object" src="{{playlist_url}}"></div>
       </div>
     </div>
-    <div class="favorite"><span class="fav_text"><a class="favs" href="" data-val={{display_name}}>add to favorite</a></span></div>
+    <div class="favorite"><span class="fav_text"><a class="favs" href="" data-val={{display_name}}>Add to favorite</a></span></div>
+  <span class="favs">
+  <a href="/festivals/{{id}}" class="random">Show</a></span>
+  <span class="buy">
+  <a href="http://seatgeek.com/search?search={{display_name}}/?aid=10321" class="random">Buy Tickets</a>
+  </span>
   </div>
     {{/each}}
 </script>

@@ -162,6 +162,7 @@ ProjectController.prototype = {
       type: 'GET'
     })
     .done(function(data){ 
+      debugger
       festivals_array = data.result 
       festivals_array.sort(function() {return 0.5 - Math.random()});
       var source = $("#fest-template").html();
