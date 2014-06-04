@@ -21,9 +21,6 @@ var getArtists = (function(){
 
 
 
-
-
-
 $(document).ready(function() {   
 user = {}
 navigator.geolocation.getCurrentPosition(function(position){user.lat = position.coords.latitude, user.lng = position.coords.longitude})
@@ -34,7 +31,6 @@ projectController = new ProjectController(projectView,projectModel)
 projectController.bindListeners()
   $("#grid").on("click", ".block", function(e) {
     if ($(this).find(".image").css("display") != "none") {
-
       $(this).flip({
         direction:'lr',
         speed: 300

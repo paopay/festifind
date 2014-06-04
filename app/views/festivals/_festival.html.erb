@@ -12,20 +12,3 @@
     <div class="playlist"><embed class="playlist-object" src="<%= festival.playlist_url %>"></div>
   </div>
 </div>
-
-<script id="fest-template" type="text/x-handlebars-template">
-    {{#each this}}
-    <div class="square">
-      	<div class="block">
-	  		<div class="image"><img class="festival-icon"  src={{fest_icon}}></div>
-	        <div class="info">
-			    <div class="name">{{display_name}}</div>
-			    <div class="city">{{city_name}}</div>
-			    <div class="date">{{start_date}}</div>
-			    <div class="playlist"><embed class="playlist-object" src="{{playlist_url}}"></div>
-			</div>
-		</div>
-		<div class="favorite"><span class="fav_text"><a class="favs" href="" data-val={{display_name}}>add to favorite</a></span></div>
-	</div>
-    {{/each}}
-</script>
