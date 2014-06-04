@@ -19,7 +19,12 @@ var getArtists = (function(){
   }
 })();
 
-$(document).ready(function() {
+
+
+$(document).ready(function() {   
+user = {}
+navigator.geolocation.getCurrentPosition(function(position){user.lat = position.coords.latitude, user.lng = position.coords.longitude})
+
 projectModel = new ProjectModel
 projectView = new ProjectView(projectModel)
 projectController = new ProjectController(projectView,projectModel)
@@ -91,7 +96,9 @@ ProjectController.prototype = {
   bindListeners : function(){
     $('.fav_text').on('click',this.addFestival.bind(this))
     $(document).on('click','.greg',this.getArtists.bind(this))
-
+    $('.distance').on('click', this.sortFestbyDistance.bind(this))
+    $('.popularity').on('click', this.sortFestbyPopularity.bind(this))
+    $('.date').on('click', this.sortFestbyDate.bind(this))
   },
   addFestival: function(e){
     e.preventDefault();
@@ -102,6 +109,50 @@ ProjectController.prototype = {
   getArtists: function(e){
     e.preventDefault()
     this.projectModel.getArtistsFromDB(e)
+  },
+  sortFestbyDistance: function(e){
+    e.preventDefault()
+      $.ajax({
+      url: '/festivals/sort',
+      type: 'GET'
+    })
+    .done(function(data){ 
+      festivals_array = data.result 
+      festivals_array.sort(function(a,b){return getDistance(user,a)-getDistance(user,b)})
+      var source = $("#fest-template").html();
+      var template = Handlebars.compile(source);
+      $('.square').remove()
+      $("#grid").html(template(festivals_array));
+    })
+  },
+  sortFestbyPopularity: function(e){
+    e.preventDefault()
+      $.ajax({
+      url: '/festivals/sort',
+      type: 'GET'
+    })
+    .done(function(data){ 
+      festivals_array = data.result 
+      festivals_array.sort(function(a,b){return b.popularity-a.popularity})
+      var source = $("#fest-template").html();
+      var template = Handlebars.compile(source);
+      $('.square').remove()
+      $("#grid").html(template(festivals_array));
+    })
+  },
+  sortFestbyDate: function(e){
+    e.preventDefault()
+      $.ajax({
+      url: '/festivals/sort',
+      type: 'GET'
+    })
+    .done(function(data){ 
+      festivals_array = data.result 
+      var source = $("#fest-template").html();
+      var template = Handlebars.compile(source);
+      $('.square').remove()
+      $("#grid").html(template(festivals_array));
+    })
   }
 }
 
