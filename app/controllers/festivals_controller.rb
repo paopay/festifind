@@ -13,6 +13,9 @@ class FestivalsController < ApplicationController
 
   def sort
     festivals = Festival.all
+    festivals.to_a.sort_by! do |festival|
+      festival.start_date
+    end
     render :json => {:result => festivals}
   end
 

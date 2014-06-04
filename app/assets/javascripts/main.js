@@ -102,6 +102,7 @@ ProjectController.prototype = {
     $(document).on('click','.greg',this.getArtists.bind(this))
     $('.distance').on('click', this.sortFestbyDistance.bind(this))
     $('.popularity').on('click', this.sortFestbyPopularity.bind(this))
+    $('.date').on('click', this.sortFestbyDate.bind(this))
   },
   addFestival: function(e){
     e.preventDefault();
@@ -124,9 +125,8 @@ ProjectController.prototype = {
       festivals_array.sort(function(a,b){return getDistance(user,a)-getDistance(user,b)})
       var source = $("#fest-template").html();
       var template = Handlebars.compile(source);
-      debugger
-      $('.block').remove()
-      $("#sort").html(template(festivals_array));
+      $('.square').remove()
+      $("#grid").html(template(festivals_array));
     })
   },
   sortFestbyPopularity: function(e){
@@ -140,9 +140,22 @@ ProjectController.prototype = {
       festivals_array.sort(function(a,b){return b.popularity-a.popularity})
       var source = $("#fest-template").html();
       var template = Handlebars.compile(source);
-      debugger
-     $('.block').remove()
-      $("#sort").html(template(festivals_array));
+      $('.square').remove()
+      $("#grid").html(template(festivals_array));
+    })
+  },
+  sortFestbyDate: function(e){
+    e.preventDefault()
+      $.ajax({
+      url: '/festivals/sort',
+      type: 'GET'
+    })
+    .done(function(data){ 
+      festivals_array = data.result 
+      var source = $("#fest-template").html();
+      var template = Handlebars.compile(source);
+      $('.square').remove()
+      $("#grid").html(template(festivals_array));
     })
   }
 }
