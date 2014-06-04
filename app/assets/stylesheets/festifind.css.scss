@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-$main-color: #e67e22;
+$main-color: #3CC3C3;
 @mixin rounded-corners {
   border-radius: 10px;
 }
@@ -16,6 +16,22 @@ body {
     text-align: center;
 
 }
+.content-placeholder{
+  width:400px;
+  display:inline-block;
+  font-size:2em;
+  overflow: auto;
+  height:300px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+}
+.fav_arists_box{
+margin-right: auto;
+margin-left: auto;
+color: #594E23;
+text-align: center;
+}
 
 #header {
   font-family: 'Kaushan Script', cursive;
@@ -24,12 +40,20 @@ body {
   padding: 10px;
 }
 
+
 #header_text {
     font-family: 'Kaushan Script', cursive;
     font-size: 500%;
     text-align: center;
     padding: 10px;
   }
+  .artist_row{
+  padding:5px;
+  }
+
+  .artist_row:nth-child(odd) {
+    background-color: #F5E5B7;
+}
 
 #grid {
   margin: 0 auto;
@@ -59,43 +83,28 @@ body {
   height:300px;
   width:300px;
 }
-.favs{
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fa8c05) );
-  background:-moz-linear-gradient( center top, #ffc477 5%, #fa8c05 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fa8c05');
-  background-color:#ffc477;
-  -webkit-border-top-left-radius:20px;
-  -moz-border-radius-topleft:20px;
-  border-top-left-radius:20px;
-  -webkit-border-top-right-radius:20px;
-  -moz-border-radius-topright:20px;
-  border-top-right-radius:20px;
-  -webkit-border-bottom-right-radius:20px;
-  -moz-border-radius-bottomright:20px;
-  border-bottom-right-radius:20px;
-  -webkit-border-bottom-left-radius:20px;
-  -moz-border-radius-bottomleft:20px;
-  border-bottom-left-radius:20px;
+.listen{
+  float:right;
+}
+.favs a,.favs{
+  display:inline;
+  margin:5px;
   text-indent:0;
-  border:1px solid #eeb44f;
-  display:inline-block;
-  color:#ffffff;
+  color:#594E23;
   font-family:Arial;
   font-size:15px;
-  font-weight:normal;
+  font-weight:bold;
   font-style:normal;
   height:28px;
   line-height:28px;
-  width:100px;
+  width:150px;
   text-decoration:none;
   text-align:center;
-  text-shadow:1px 1px 0px #cc9f52;
+  
 }
 .favs:hover {
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fa8c05), color-stop(1, #ffc477) );
-  background:-moz-linear-gradient( center top, #fa8c05 5%, #ffc477 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa8c05', endColorstr='#ffc477');
-  background-color:#fa8c05;
+  
+  border-bottom:2px solid black;
 }
 .favs:active {
   position:relative;
@@ -104,11 +113,11 @@ body {
 .info {
   display: none;
 }
-#festivals_box{
+#festivals_box,.artists_box {
   background-color:white;
   border:1px solid black;
   margin-bottom:50px;
-  width:600px;
+  width:1000px;
   margin-right: auto;
 margin-left: auto;
 }
@@ -119,18 +128,7 @@ margin-left: auto;
   width: 400px;
 display: inline-block;
 }
-.fav_arists_box{
-  background-color: white;
-border: 1px solid black;
-margin-bottom: 50px;
-width: 500px;
-margin-right: auto;
-margin-left: auto;
-color: #e67e22;
-font-size: 2em;
-height: 300px;
-overflow: auto;
-}
+
 .festival-icon {
   max-width: 100%;
   height: 300px;
@@ -142,8 +140,9 @@ overflow: auto;
 
 }
 .explore, #show_favs  {
-  color:$main-color;
+  color: #594E23;
   font-size:4em;
+  text-align:center;
   .no_favs,.fav_artists_box{
   font-size:.5em;
   }
