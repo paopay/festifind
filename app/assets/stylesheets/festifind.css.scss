@@ -15,6 +15,9 @@ body {
     margin-bottom: 20px;
 
 }
+.band_name{
+  display:inline;
+}
 .content-placeholder{
   width:400px;
   display:inline-block;
@@ -48,6 +51,7 @@ text-align: center;
   }
   .artist_row{
   padding:5px;
+  display:block;
   }
 
   .artist_row:nth-child(odd) {
