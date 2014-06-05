@@ -10,9 +10,8 @@ class Youtube
 	# 	response["items"].first["id"]["videoId"]
 	# end
 
-	def self.get_video_id(artist_name)
-		artist = Artist.where(display_name: artist_name).first
-		artist_and_song_array = artist.display_name.split(' ') + artist.top_track.split(' ')
+	def self.get_video_id(artist, top_track)
+		artist_and_song_array = artist.display_name.split(' ') + top_track.split(' ')
 		search_string = artist_and_song_array.join('+')
 		url = "https://www.googleapis.com/youtube/v3/search?q=#{search_string}&part=id%2Csnippet&type=video&videoEmbeddable=true&key=#{API_KEY}"
 		response = HTTParty.get(url)
