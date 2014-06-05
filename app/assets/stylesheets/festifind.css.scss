@@ -111,6 +111,16 @@ text-align: center;
   width:300px;
 }
 
+.image2 {
+  display: table-cell;
+  height:300px;
+  width:300px;
+}
+
+.image1 { position:absolute; top: 25px; left: 25px; z-index: 1; } 
+.image2 { position:absolute; top: 25px; left: 25px; z-index: 3; } 
+
+
 a.listen{
   float:right;
   @include band-name-info;

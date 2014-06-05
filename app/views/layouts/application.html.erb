@@ -10,14 +10,7 @@
 <body>
   <div id="header_bar">
   <div id="header_text">FestiFind</div>
-
-  <span>Filter By:</span>
-  <a href="/" class="date">Upcoming |</a>
-  <a href="/" class="distance">Distance |</a>
-  <a href="/" class="popularity">Most Popular |</a>
-  <a href="/" class="random">Random Order |</a>
-  <a href="/" class="favorite">Favorites</a>
-
+  <span><i>playlists, videos and tickets in a click<i></span>
 </div>
 
 <script id="some-template" type="text/x-handlebars-template">
@@ -43,9 +36,9 @@
     </div>
     <div class="favorite"><span class="fav_text"><a class="favs" href="" data-val={{display_name}}>Add to favorite</a></span></div>
   <span class="favs">
-  <a href="/festivals/{{id}}" class="random">Show</a></span>
+  <a href="/festivals/{{id}}" target="_blank">Show</a></span>
   <span class="favs">
-  <a href="http://seatgeek.com/search?search={{display_name}}/?aid=10853">Tickets</a>
+  <a href="http://seatgeek.com/search?search={{display_name}}" target="_blank">Tickets</a>
   </span>
   </div>
     {{/each}}

@@ -7,10 +7,10 @@
 </div>
 <div class="filters">
 <span>Filter By:</span>
-  <a href="/" class="date">Upcoming |</a>
-  <a href="/" class="distance">Distance |</a>
-  <a href="/" class="popularity">Most Popular |</a>
-  <a href="/" class="random">Random Order</a>
+  <a href="../page1.html" class="date">Upcoming |</a>
+  <a href="../page1.html" class="distance">Distance |</a>
+  <a href="../page1.html" class="popularity">Most Popular |</a>
+  <a href="../page1.html" class="random">Random Order</a>
 </div>
   <a href="/" class="my_favs">Favorite List</a>
 <div class="artists_module">
@@ -25,11 +25,11 @@
     	<div class="favorite">
     		<span class="fav_text"><a class="favs" href="" data-val="<%=festival.display_name%>">Add to Favorite</a></span>
         <span class="favs">
-        <%= link_to 'Show',[festival] %>
+        <%= link_to 'Explore',[festival] %>
       </span>
-      <span class="buy">
-  <a href="http://seatgeek.com/search?search=<%=festival.display_name%>/?aid=10853">Tickets</a>
-  </span>
+      <span class="favs">
+        <a href="http://seatgeek.com/search?search=<%=festival.display_name%>" target="_blank">Tickets</a>
+      </span>
     	</div>
 	  </div>
   <% end %>
