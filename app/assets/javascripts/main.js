@@ -22,14 +22,6 @@ var getArtists = (function(){
 $(document).ready(function() {   
 user = {}
 navigator.geolocation.getCurrentPosition(function(position){user.lat = position.coords.latitude, user.lng = position.coords.longitude})
-$(".festival-icon").load(function() {
-  for(i=0; i < $(".festival-icon").length; i++){
-    if($('.festival-icon')[i].naturalHeight === 298 && $('.festival-icon')[i].naturalWidth === 298){
-      x = $('.image')[i]
-      x.children[0].src="http://i.telegraph.co.uk/multimedia/archive/01386/festival1_1386566c.jpg"
-    }
-  }
-})
 projectModel = new ProjectModel
 projectView = new ProjectView(projectModel)
 projectController = new ProjectController(projectView,projectModel)
@@ -74,6 +66,7 @@ var projectModule = (function(){
 var ProjectModel = function(){
   this.favoriteFestivals = []
   this.allFestivalArtists = []
+  this.allFestivals = []
 }
 
 ProjectModel.prototype = {
@@ -99,27 +92,17 @@ var ProjectController = function(projectView,projectModel){
 
 ProjectController.prototype = {
   bindListeners : function(){
+    this.getFestInfoFromServer();
     $('.fav_text').on('click',this.addFestival.bind(this))
     $(document).on('click','.greg',this.getArtists.bind(this))
     $('.distance').on('click', this.sortFestbyDistance.bind(this))
     $('.popularity').on('click', this.sortFestbyPopularity.bind(this))
-    $('.date').on('click', this.sortFestbyDate.bind(this))
+    $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
   },
   showFavs:function(e){
     $('#festivals_box').show();
-  },
-  replaceBadPhotos: function(){
-    debugger
-    $(".festival-icon").load(function() {
-      for(i=0; i < $(".festival-icon").length; i++){
-        if($('.festival-icon')[i].naturalHeight === 298 && $('.festival-icon')[i].naturalWidth === 298){
-          x = $('.image')[i]
-          x.children[0].src="http://i.telegraph.co.uk/multimedia/archive/01386/festival1_1386566c.jpg"
-        }
-      }
-    })
   },
   addFestival: function(e){
     e.preventDefault();
@@ -127,79 +110,59 @@ ProjectController.prototype = {
     this.projectView.update()
     this.projectView.removeLink(e)
   },
-
   getArtists: function(e){
     e.preventDefault()
     this.projectModel.getArtistsFromDB(e)
   },
-  sortFestbyDistance: function(e){
+  getFestInfoFromServer: function(){
     self = this
-    e.preventDefault()
-      $.ajax({
+    $.ajax({
       url: '/festivals/sort',
       type: 'GET'
     })
     .done(function(data){ 
-      festivals_array = data.result 
-      festivals_array.sort(function(a,b){return getDistance(user,a)-getDistance(user,b)})
+      self.projectModel.allFestivals = data.result
+      for(i = 0; i < data.result.length; i++){
+        self.projectModel.allFestivals[i].start_date = 
+        new Date(Date.parse(self.projectModel.allFestivals[i].start_date)).toDateString()
+      }
       var source = $("#fest-template").html();
       var template = Handlebars.compile(source);
       $('.square').remove()
-      $("#grid").html(template(festivals_array));
-      self.replaceBadPhotos();
+      $("#grid").html(template(self.projectModel.allFestivals));
     })
+  },
+  sortFestbyDistance: function(e){
+    e.preventDefault() 
+    this.projectModel.allFestivals.sort(function(a,b){return getDistance(user,a)-getDistance(user,b)})
+    var source = $("#fest-template").html();
+    var template = Handlebars.compile(source);
+    $('.square').remove()
+    $("#grid").html(template(this.projectModel.allFestivals));
   },
   sortFestbyPopularity: function(e){
-    self = this
-    e.preventDefault()
-      $.ajax({
-      url: '/festivals/sort',
-      type: 'GET'
-    })
-    .done(function(data){ 
-      festivals_array = data.result 
-      festivals_array.sort(function(a,b){return b.popularity-a.popularity})
-      var source = $("#fest-template").html();
-      var template = Handlebars.compile(source);
-      $('.square').remove()
-      $("#grid").html(template(festivals_array));
-      self.replaceBadPhotos();
-    })
+    e.preventDefault() 
+    this.projectModel.allFestivals.sort(function(a,b){return b.popularity-a.popularity})
+    var source = $("#fest-template").html();
+    var template = Handlebars.compile(source);
+    $('.square').remove()
+    $("#grid").html(template(this.projectModel.allFestivals));
   },
-  sortFestbyDate: function(e){
-    self = this
+  sortFestbyDate: function(e){  
     e.preventDefault()
-      $.ajax({
-      url: '/festivals/sort',
-      type: 'GET'
-    })
-    .done(function(data){ 
-      festivals_array = data.result 
-      var source = $("#fest-template").html();
-      var template = Handlebars.compile(source);
-      $('.square').remove()
-      $("#grid").html(template(festivals_array));
-      self.replaceBadPhotos();
-    })
+    this.projectModel.allFestivals.sort(function(a,b) {return Date.parse(a.start_date)-Date.parse(b.start_date)});
+    var source = $("#fest-template").html();
+    var template = Handlebars.compile(source);
+    $('.square').remove()
+    $("#grid").html(template(this.projectModel.allFestivals));
   },
   sortFestbyRandom: function(e){
-    debugger
-    self = this
     e.preventDefault()
-      $.ajax({
-      url: '/festivals/sort',
-      type: 'GET'
-    })
-    .done(function(data){ 
-      festivals_array = data.result 
-      festivals_array.sort(function() {return 0.5 - Math.random()});
-      var source = $("#fest-template").html();
-      var template = Handlebars.compile(source);
-      $('.square').remove()
-      $("#grid").html(template(festivals_array));
-      debugger
-      self.replaceBadPhotos();
-    })
+    this.projectModel.allFestivals.sort(function() {return 0.5 - Math.random()});
+    var source = $("#fest-template").html();
+    var template = Handlebars.compile(source);
+    $('.square').remove()
+    $("#grid").html(template(this.projectModel.allFestivals));
   },
 }
 

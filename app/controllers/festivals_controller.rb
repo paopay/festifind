@@ -1,7 +1,6 @@
 class FestivalsController < ApplicationController
 
   def index
-  	@festivals = Festival.order(:start_date)
   end
 
   def show
