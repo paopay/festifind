@@ -14,7 +14,7 @@ class Youtube
 		artist = Artist.where(display_name: artist_name).first
 		artist_and_song_array = artist.display_name.split(' ') + artist.top_track.split(' ')
 		search_string = artist_and_song_array.join('+')
-		url = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&type=video&videoEmbeddable=true&key=#{API_KEY}"
+		url = "https://www.googleapis.com/youtube/v3/search?q=#{search_string}&part=id%2Csnippet&type=video&videoEmbeddable=true&key=#{API_KEY}"
 		response = HTTParty.get(url)
 		response["items"].first["id"]["videoId"]
 	end

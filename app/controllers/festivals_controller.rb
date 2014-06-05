@@ -7,6 +7,7 @@ class FestivalsController < ApplicationController
   def show
     @festival = Festival.find params[:id]
     @artists = @festival.artists
+    @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artists.first.display_name)
   end
 
   def create
