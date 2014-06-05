@@ -19,8 +19,8 @@ class FestivalsController < ApplicationController
     render :json => {:result => festivals}
   end
 
-  # # Although hacky, you would just call the login route manually,
-  # # to create playlists
+  # Although hacky, you would just call the login route manually,
+  # to create playlists
   def playlists
     access_token = session[:at]
     access_token_secret = session[:ats]
@@ -47,7 +47,7 @@ class FestivalsController < ApplicationController
     end
   end
 
-  def login
+  def generate
     #get request tokens
     rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"])
     callback_url = (URI.join request.url, festivals_auth_path).to_s

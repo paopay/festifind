@@ -1,16 +1,9 @@
 
 task scrap_songkick: :environment do
 	json_list = Songkick.fetch_festival_ids
-	# p json_list
-	# p '+'*20
-	# json_list.each do |festival_json|
-	# 	p festival_json
-	# 	make_festivals(festival_json)
-	# end
 end
 
 def make_festivals(json_response)
-
 	event = json_response["resultsPage"]["results"]["event"]
 	_festival = Festival.create(song_kick_id: event["id"],
 									popularity: event["popularity"],
