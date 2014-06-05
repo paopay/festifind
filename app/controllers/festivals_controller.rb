@@ -1,12 +1,10 @@
 class FestivalsController < ApplicationController
 
   def index
-  	@festivals = Festival.order :start_date
+  	@festivals = Festival.order(:start_date)
   end
 
   def show
-    vid_id = "rJYcmq__nDM"
-    @vid_src = "http://www.youtube.com/embed/" + vid_id
     @festival = Festival.find params[:id]
     @artists = @festival.artists
   end
@@ -16,26 +14,20 @@ class FestivalsController < ApplicationController
   end
 
   def sort
-    festivals = Festival.all
-    festivals.to_a.sort_by! do |festival|
-      festival.start_date
-    end
+    festivals = Festival.order(:start_date)
     render :json => {:result => festivals}
   end
 
-  # Although hacky, you would just call the login route manually,
-  # to create playlists
+  # # Although hacky, you would just call the login route manually,
+  # # to create playlists
   def playlists
     access_token = session[:at]
     access_token_secret = session[:ats]
     if access_token and access_token_secret
       rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
       currentUser = rdio.call('currentUser')['result']
-      play = rdio.call('getPlaylists')
-      # play["result"]["owned"].each do |festival|
-      #   p festival["embedUrl"]
-      # end
     end
+
     Festival.all.each do |festival|
       name = festival.display_name
       desc = festival.city_name
@@ -52,10 +44,6 @@ class FestivalsController < ApplicationController
       festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
       festival.save
     end
-    # name = "Hi"
-    # desc = "Yoooo"
-    # tracks = []
-    # playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => "t45423856, t45423856"})
   end
 
   def login
@@ -98,3 +86,4 @@ class FestivalsController < ApplicationController
     :popularity, :url, :playlist_url, :icon, :fest_icon)
   end
 end
+

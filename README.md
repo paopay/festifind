@@ -13,7 +13,7 @@ Our app is built in Ruby on Rails and makes use of the Songkick, Echo Nest, and 
 
 ### Reflection
 
-This code is extremely rough and has not been refactored yet. The database needs to be seeded and `rake get_info` needs to be run in order for this app to work. Furthermore, it takes about 30 minutes for the entire database to seed. This should be refactored. We can also refactor to cache artist hot tracks, but we wanted completely dynamic site that would change as artists hot tracks changed.
+This code is extremely rough and has not been refactored yet. The database needs to be seeded and `rake scrap_songkick` needs to be run in order for this app to work. Furthermore, it takes about 30 minutes for the entire database to seed. This should be refactored. We can also refactor to cache artist hot tracks, but we wanted completely dynamic site that would change as artists hot tracks changed.
 
 ***
 

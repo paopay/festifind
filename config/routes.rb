@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'festivals/auth', :to => 'festivals#auth'
   get 'festivals/sort', :to => 'festivals#sort'
   get 'artists/find', :to => 'artists#find'
-  resources :festivals, :only => [:index, :show]
+  resources :festivals, :only => [:index,:show]
   root :to => "festivals#index"
 end

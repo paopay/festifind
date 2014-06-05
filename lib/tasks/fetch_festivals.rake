@@ -1,5 +1,5 @@
 
-task get_info: :environment do
+task scrap_songkick: :environment do
 	json_list = Songkick.fetch_festival_ids
 	# p json_list
 	# p '+'*20
@@ -41,7 +41,7 @@ module Songkick
 	end
 
 	def self.fetch_festival_ids
-		num_of_pages = 5
+		num_of_pages = 20
 		master_array = []
 		(1..num_of_pages).each do |page_listings|
 		  p = Page.new("http://www.songkick.com/search?page=#{page_listings}&per_page=10&query=festival&type=upcoming")
