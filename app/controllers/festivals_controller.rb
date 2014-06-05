@@ -7,7 +7,7 @@ class FestivalsController < ApplicationController
   def show
     @festival = Festival.find params[:id]
     @artists = @festival.artists
-    @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artists.first.display_name)
+    @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artists.first, @artists.first.top_track)
   end
 
   def create
@@ -37,7 +37,7 @@ class FestivalsController < ApplicationController
       festival.artists.each do |artist|
         new_tracks, top_track_id = Echonest.get_tracks_list(artist.song_kick_id.to_s)
         tracks << new_tracks
-        artist.update_attribute(:top_track, top_track_id)
+        artist.update_attribute(:top_track, Youtube.get_video_id(artist, top_track_id))
       end
 
       tracks = tracks.join(",")
