@@ -10,14 +10,7 @@
 <body>
   <div id="header_bar">
   <div id="header_text">FestiFind</div>
-
-  <span>Filter By:</span>
-  <a href="/" class="date">Upcoming |</a>
-  <a href="/" class="distance">Distance |</a>
-  <a href="/" class="popularity">Most Popular |</a>
-  <a href="/" class="random">Random Order |</a>
-  <a href="/" class="favorite">Favorites</a>
-
+  <h3><i>Complete Playlists,  Artist Videos and Tickets in a click<i></h3>
 </div>
 
 <script id="some-template" type="text/x-handlebars-template">
@@ -31,23 +24,25 @@
 </script>
 <script id="fest-template" type="text/x-handlebars-template">
     {{#each this}}
+    
     <div class="square">
-        <div class="block">
-        <div class="image"><img class="festival-icon" src={{fest_icon}}></div>
+      <div class="block">
+        <div class="image" style="background-image:url({{icon}})"><img class="festival-icon" src={{fest_icon}}></div>
           <div class="info">
           <div class="name">{{display_name}}</div>
           <div class="city">{{city_name}}</div>
           <div class="date">{{start_date}}</div>
           <div class="playlist"><embed class="playlist-object" src="{{playlist_url}}"></div>
+        </div>
+      </div>
+    
+      <div class="favorite">
+        <span class="fav_text"><a class="favs" href="" data-val={{display_name}}>Add to favorite</a></span>
+        <span class="favs"><a href="/festivals/{{id}}" target="_blank">Show</a></span>
+        <span class="favs"><a href="http://seatgeek.com/search?search={{display_name}}" target="_blank">Tickets</a></span>
       </div>
     </div>
-    <div class="favorite"><span class="fav_text"><a class="favs" href="" data-val={{display_name}}>Add to favorite</a></span></div>
-  <span class="favs">
-  <a href="/festivals/{{id}}" class="random">Show</a></span>
-  <span class="favs">
-  <a href="http://seatgeek.com/search?search={{display_name}}/?aid=10853">Tickets</a>
-  </span>
-  </div>
+
     {{/each}}
 </script>
 <%= yield %>

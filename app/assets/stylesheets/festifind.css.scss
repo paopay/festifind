@@ -24,7 +24,7 @@ body {
   color: black;
 }
 
-.date,.popularity,.distance,.random,.filters{
+.upcoming,.popularity,.distance,.random,.filters{
     margin-bottom: 20px;
     text-align: center;
     @include basic-seperators;
@@ -110,6 +110,14 @@ text-align: center;
   height:300px;
   width:300px;
 }
+
+.image2 {
+  display: table-cell;
+  height:300px;
+  width:300px;
+}
+
+
 
 a.listen{
   float:right;
