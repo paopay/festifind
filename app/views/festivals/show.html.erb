@@ -7,8 +7,8 @@
 	<div class="content-placeholder">
 		<% @artists.each do |t| %>
 	    <div class="artist_row">
-	    <span class="band_name"><%= t.display_name %></span>
-	    <a class="listen" href="" data-val="<%=t.top_track%>">Listen</a>
+	    	<span class="band_name"><%= t.display_name %></span>
+	    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="<%=t.id%>">Listen</a>
 	    </div>	    
     <% end %>
 	</div>

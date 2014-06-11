@@ -100,7 +100,21 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
+    $('.listen').on('click', this.showVids)
   },
+  showVids: function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/festivals/videos/',
+      data: {artist: $(this).attr('data-val'), festival: $(this).attr('data-fest')},
+      type: 'GET'
+    })
+    .done(function(data){
+      $('iframe')[0].src = data
+    })
+
+  },
+
   showFavs:function(e){
     $('#festivals_box').show();
   },

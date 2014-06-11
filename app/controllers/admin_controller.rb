@@ -41,20 +41,22 @@ class AdminController < ApplicationController
     end
 
     Festival.all.each do |festival|
-      name = festival.display_name
-      desc = festival.city_name
-      tracks = []
+      if festival.playlist_url == nil
+        name = festival.display_name
+        desc = festival.city_name
+        tracks = []
 
-      festival.artists.each do |artist|
-        new_tracks, top_track_id = Echonest.get_tracks_list(artist.song_kick_id.to_s)
-        tracks << new_tracks
-        artist.update_attribute(:top_track, Youtube.get_video_id(artist, top_track_id))
+        festival.artists.each do |artist|
+          new_tracks, top_track_id = Echonest.get_tracks_list(artist.song_kick_id.to_s)
+          tracks << new_tracks
+          artist.update_attribute(:top_track, top_track_id)
+        end
+
+        tracks = tracks.join(",")
+        playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
+        festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
+        festival.save
       end
-
-      tracks = tracks.join(",")
-      playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
-      festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
-      festival.save
     end
   end
 end
