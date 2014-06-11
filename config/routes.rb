@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   get 'admin/generate', :to => 'admin#generate'
   get 'admin/auth', :to => 'admin#auth'
   get 'festivals/sort', :to => 'festivals#sort'
-  get 'festivals/artists', :to => 'festivals#artists'
   get 'festivals/videos', :to => 'festivals#videos'
   get 'artists/find', :to => 'artists#find'
-
 
   resources :festivals, :only => [:index,:show]
   root :to => "festivals#index"

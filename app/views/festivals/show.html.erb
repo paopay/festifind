@@ -4,7 +4,7 @@
 </div>
 
 <div class="fav_artists_box">
-	<div class="content-placeholder">
+	<div class="list-placeholder">
 		<% @artists.each do |t| %>
 	    <div class="artist_row">
 	    	<span class="band_name"><%= t.display_name %></span>
@@ -13,7 +13,13 @@
     <% end %>
 	</div>
 
-	<div class="content-placeholder">
+	<div class="video-placeholder">
 		<%= render "youtube_vid" %>
 	</div>
 </div>
+
+<h3>
+	<a href="" onclick="setTimeout(function(){var ww = window.open(window.location, '_self'); ww.close(); }, 1000);">
+    Close
+</a>
+</h3>

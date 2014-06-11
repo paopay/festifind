@@ -1,10 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-$main-color: #3CC3C3;
+$main-color: #0772A1;
 @mixin rounded-corners {
-  border-radius: 10px;
+  border-radius: 15px;
 }
 @mixin band-name-info {
-  color:#594E23;
+  color:#63AFD0;
   font-family:Arial;
   font-size:20px;
   font-weight:bold;
@@ -19,7 +19,6 @@ $main-color: #3CC3C3;
     text-align: center;
 }
 body {
-  font-size: 12px;
   background-color: $main-color;
   color: black;
 }
@@ -28,7 +27,7 @@ body {
     margin-bottom: 20px;
     text-align: center;
     @include basic-seperators;
-    color:#594E23;
+    color:#FF8700;
   font-family:Arial;
   font-size:20px;
   font-weight:bold;
@@ -40,22 +39,39 @@ body {
 }
 .band_name{
   display:inline;
+  font-size: 20px;
 }
-.content-placeholder{
-  width:400px;
+.list-placeholder{
+  width:325px;
   display:inline-block;
   font-size:2em;
   overflow: auto;
-  height:300px;
+  height:530px;
   background-color: white;
   border: 1px solid black;
   margin-bottom: 50px;
   text-align:left;
+  margin: 0px auto;
+  margin-left: 200px;
 }
+
+.video-placeholder{
+  width: 800px;
+  display:inline-block;
+  font-size:2em;
+  overflow: auto;
+  height: 530px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  text-align:left;
+  margin: 0px auto;
+}
+
 .fav_arists_box{
 margin-right: auto;
 margin-left: auto;
-color: #594E23;
+color: #FF8700;
 text-align: center;
 }
 
@@ -98,11 +114,10 @@ text-align: center;
 .block {
   height: 300px;
   width: 300px;
-  background-color: #ecf0f1;
+  background-color: #0772a1;
   @include rounded_corners;
   margin: 1px;
   padding: 2px;
-
 }
 
 .image {
@@ -116,7 +131,6 @@ text-align: center;
   height:300px;
   width:300px;
 }
-
 
 
 a.listen{
@@ -167,7 +181,7 @@ display: inline-block;
 
 .festival-icon {
   max-width: 100%;
-  height: 300px;
+  height: 305px;
 
 }
 .fav_text {
