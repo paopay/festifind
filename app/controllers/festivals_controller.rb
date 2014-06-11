@@ -4,10 +4,29 @@ class FestivalsController < ApplicationController
   end
 
   def show
-    @festival = Festival.find params[:id]
-    @artists = @festival.artists
-    @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artists.first, @artists.first.top_track)
+    if params[:artist] != nil
+      p params
+      p 'artists'
+      @festival = Festival.find params[:id]
+      @artists = @festival.artists
+      @artist = Artist.find params[:artist]
+      @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artist, @artist.top_track)
+    else
+      p params
+      p 'fests'
+      @festival = Festival.find params[:id]
+      @artists = @festival.artists
+      @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artists.first, @artists.first.top_track)
+    end
   end
+
+  def videos
+    p params
+    @artist = Artist.find params[:artist]
+    @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artist, @artist.top_track)
+    render :layout => false, :text => @vid_src 
+  end
+
 
   def create
   	Festival.create(festival_params)
@@ -29,20 +48,23 @@ class FestivalsController < ApplicationController
     end
 
     Festival.all.each do |festival|
-      name = festival.display_name
-      desc = festival.city_name
-      tracks = []
+      if festival.playlist_url == nil
+        name = festival.display_name
+        desc = festival.city_name
+        tracks = []
 
-      festival.artists.each do |artist|
-        new_tracks, top_track_id = Echonest.get_tracks_list(artist.song_kick_id.to_s)
-        tracks << new_tracks
-        artist.update_attribute(:top_track, Youtube.get_video_id(artist, top_track_id))
+        festival.artists.each do |artist|
+          new_tracks, top_track_id = Echonest.get_tracks_list(artist.song_kick_id.to_s)
+          tracks << new_tracks
+          p top_track_id
+          artist.update_attribute(:top_track, top_track_id)
+        end
+
+        tracks = tracks.join(",")
+        playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
+        festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
+        festival.save
       end
-
-      tracks = tracks.join(",")
-      playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
-      festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
-      festival.save
     end
   end
 

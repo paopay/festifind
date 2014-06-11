@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  get 'festivals/playlists', :to => 'festivals#playlists'
-  get 'festivals/generate', :to => 'festivals#generate'
-  get 'festivals/auth', :to => 'festivals#auth'
+  get 'admin/playlists', :to => 'admin#playlists'
+  get 'admin/generate', :to => 'admin#generate'
+  get 'admin/auth', :to => 'admin#auth'
   get 'festivals/sort', :to => 'festivals#sort'
+  get 'festivals/artists', :to => 'festivals#artists'
+  get 'festivals/videos', :to => 'festivals#videos'
   get 'artists/find', :to => 'artists#find'
+
+
   resources :festivals, :only => [:index,:show]
   root :to => "festivals#index"
 end
