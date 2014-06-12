@@ -38,13 +38,22 @@ body {
 }
 
 .upcoming,.popularity,.distance,.random,.filters{
-    margin-bottom: 20px;
-    text-align: center;
-    @include basic-seperators;
-    color:#FF8700;
-  font-family:Arial;
+  margin-bottom: 20px;
+  text-align: center;
+  @include basic-seperators;
+  color:#BDBDBD;
+  font-family:'Dosis';
   font-size:20px;
   font-weight:bold;
+    a {
+      text-decoration: none;
+        &:hover {
+          color: #E0B453;
+        }
+        &:visited {
+          color: #BDBDBD;
+        }
+    }
 }
 
 //---------HEADER-----------
