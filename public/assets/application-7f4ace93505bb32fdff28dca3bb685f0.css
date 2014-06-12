@@ -1,0 +1,571 @@
+@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
+/* line 21, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+body {
+  background-color: #0772a1;
+  color: black;
+}
+
+/* line 26, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.upcoming, .popularity, .distance, .random, .filters {
+  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #FF8700;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 36, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#header_bar {
+  background-color: #19b2f5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* line 40, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.band_name {
+  display: inline;
+  font-size: 20px;
+}
+
+/* line 44, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.list-placeholder {
+  width: 325px;
+  display: inline-block;
+  font-size: 2em;
+  overflow: auto;
+  height: 530px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  text-align: left;
+  margin: 0px auto;
+  margin-left: 250px;
+}
+
+/* line 58, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.video-placeholder {
+  width: 800px;
+  display: inline-block;
+  font-size: 2em;
+  overflow: auto;
+  height: 530px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  text-align: left;
+  margin: 0px auto;
+}
+
+/* line 71, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.fav_arists_box {
+  margin-right: auto;
+  margin-left: auto;
+  color: #FF8700;
+  text-align: center;
+}
+
+/* line 78, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#header {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 500%;
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 86, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#header_text {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 500%;
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 92, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.artist_row {
+  padding: 5px;
+  display: block;
+}
+
+/* line 97, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.artist_row:nth-child(odd) {
+  background-color: #F5E5B7;
+}
+
+/* line 101, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#grid {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 106, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.block, .image, .info {
+  overflow: hidden;
+}
+
+/* line 110, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.image, .info {
+  vertical-align: middle;
+}
+
+/* line 114, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.block {
+  height: 300px;
+  width: 300px;
+  background-color: #0772a1;
+  border-radius: 15px;
+  margin: 1px;
+  padding: 2px;
+}
+
+/* line 123, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.image {
+  display: table-cell;
+  height: 300px;
+  width: 300px;
+}
+
+/* line 129, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.image2 {
+  display: table-cell;
+  height: 300px;
+  width: 300px;
+}
+
+/* line 136, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+a.listen {
+  float: right;
+  color: #63AFD0;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  display: inline;
+  height: 28px;
+  line-height: 28px;
+  text-decoration: none;
+}
+
+/* line 140, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+a.listen:hover {
+  border-bottom: 2px solid #594E23;
+}
+
+/* line 143, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.favs a, .favs {
+  color: #63AFD0;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  display: inline;
+  height: 28px;
+  line-height: 28px;
+  text-decoration: none;
+  margin: 5px;
+  text-indent: 0;
+  width: 150px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* line 151, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.favs:hover {
+  border-bottom: 2px solid black;
+}
+
+/* line 155, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.favs:active {
+  position: relative;
+  top: 1px;
+}
+
+/* line 159, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.info {
+  display: none;
+}
+
+/* line 162, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#festivals_box {
+  display: none;
+}
+
+/* line 165, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#festivals_box, .artists_box {
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* line 174, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.artists_module {
+  display: none;
+}
+
+/* line 177, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.festival_name {
+  width: 400px;
+  display: inline-block;
+}
+
+/* line 182, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.festival-icon {
+  max-width: 100%;
+  height: 305px;
+}
+
+/* line 187, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.fav_text {
+  color: #0772a1;
+  font-size: 2em;
+}
+
+/* line 192, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.explore, #show_favs {
+  color: #594E23;
+  font-size: 4em;
+  text-align: center;
+}
+/* line 196, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.explore .no_favs, .explore .fav_artists_box, #show_favs .no_favs, #show_favs .fav_artists_box {
+  font-size: .5em;
+}
+
+/* line 200, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#show_favs {
+  display: none;
+}
+/* line 202, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+#show_favs #each_festival {
+  font-size: .5em;
+}
+
+/* line 207, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.playlist {
+  padding-top: 10px;
+}
+
+/* line 210, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.each_festival {
+  display: none;
+}
+
+/* line 213, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.playlist-object {
+  height: 240px;
+}
+
+/* line 216, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.square {
+  height: 375px;
+  width: 325px;
+  display: inline-block;
+  margin: 0;
+}
+
+/* line 222, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss */
+.favorite {
+  display: block;
+  height: 50px;
+  width: 220px;
+  text-align: center;
+  margin: auto;
+}
+@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
+/* line 21, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+body {
+  background-color: #0772a1;
+  color: black;
+}
+
+/* line 26, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.upcoming, .popularity, .distance, .random, .filters {
+  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #FF8700;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 36, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#header_bar {
+  background-color: #19b2f5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* line 40, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.band_name {
+  display: inline;
+  font-size: 20px;
+}
+
+/* line 44, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.list-placeholder {
+  width: 325px;
+  display: inline-block;
+  font-size: 2em;
+  overflow: auto;
+  height: 530px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  text-align: left;
+  margin: 0px auto;
+  margin-left: 250px;
+}
+
+/* line 58, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.video-placeholder {
+  width: 800px;
+  display: inline-block;
+  font-size: 2em;
+  overflow: auto;
+  height: 530px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  text-align: left;
+  margin: 0px auto;
+}
+
+/* line 71, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.fav_arists_box {
+  margin-right: auto;
+  margin-left: auto;
+  color: #FF8700;
+  text-align: center;
+}
+
+/* line 78, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#header {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 500%;
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 86, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#header_text {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 500%;
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 92, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.artist_row {
+  padding: 5px;
+  display: block;
+}
+
+/* line 97, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.artist_row:nth-child(odd) {
+  background-color: #F5E5B7;
+}
+
+/* line 101, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#grid {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 106, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.block, .image, .info {
+  overflow: hidden;
+}
+
+/* line 110, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.image, .info {
+  vertical-align: middle;
+}
+
+/* line 114, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.block {
+  height: 300px;
+  width: 300px;
+  background-color: #0772a1;
+  border-radius: 15px;
+  margin: 1px;
+  padding: 2px;
+}
+
+/* line 123, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.image {
+  display: table-cell;
+  height: 300px;
+  width: 300px;
+}
+
+/* line 129, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.image2 {
+  display: table-cell;
+  height: 300px;
+  width: 300px;
+}
+
+/* line 136, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+a.listen {
+  float: right;
+  color: #63AFD0;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  display: inline;
+  height: 28px;
+  line-height: 28px;
+  text-decoration: none;
+}
+
+/* line 140, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+a.listen:hover {
+  border-bottom: 2px solid #594E23;
+}
+
+/* line 143, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.favs a, .favs {
+  color: #63AFD0;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  display: inline;
+  height: 28px;
+  line-height: 28px;
+  text-decoration: none;
+  margin: 5px;
+  text-indent: 0;
+  width: 150px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* line 151, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.favs:hover {
+  border-bottom: 2px solid black;
+}
+
+/* line 155, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.favs:active {
+  position: relative;
+  top: 1px;
+}
+
+/* line 159, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.info {
+  display: none;
+}
+
+/* line 162, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#festivals_box {
+  display: none;
+}
+
+/* line 165, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#festivals_box, .artists_box {
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 50px;
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* line 174, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.artists_module {
+  display: none;
+}
+
+/* line 177, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.festival_name {
+  width: 400px;
+  display: inline-block;
+}
+
+/* line 182, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.festival-icon {
+  max-width: 100%;
+  height: 305px;
+}
+
+/* line 187, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.fav_text {
+  color: #0772a1;
+  font-size: 2em;
+}
+
+/* line 192, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.explore, #show_favs {
+  color: #594E23;
+  font-size: 4em;
+  text-align: center;
+}
+/* line 196, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.explore .no_favs, .explore .fav_artists_box, #show_favs .no_favs, #show_favs .fav_artists_box {
+  font-size: .5em;
+}
+
+/* line 200, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#show_favs {
+  display: none;
+}
+/* line 202, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+#show_favs #each_festival {
+  font-size: .5em;
+}
+
+/* line 207, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.playlist {
+  padding-top: 10px;
+}
+
+/* line 210, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.each_festival {
+  display: none;
+}
+
+/* line 213, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.playlist-object {
+  height: 240px;
+}
+
+/* line 216, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.square {
+  height: 375px;
+  width: 325px;
+  display: inline-block;
+  margin: 0;
+}
+
+/* line 222, /Users/darrellsommerlatt/heroku/festifind/app/assets/stylesheets/festifind.css.scss.erb */
+.favorite {
+  display: block;
+  height: 50px;
+  width: 220px;
+  text-align: center;
+  margin: auto;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
