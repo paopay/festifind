@@ -13,7 +13,7 @@ var getArtists = (function(){
     var handleData = artistsJSONObject
 
     $(".artists_module").show();
-    $("#content-placeholder").html(template(handleData));   
+    $("#list-placeholder").html(template(handleData));   
     })
     }
   }
@@ -112,9 +112,7 @@ ProjectController.prototype = {
     .done(function(data){
       $('iframe')[0].src = data
     })
-
   },
-
   showFavs:function(e){
     $('#festivals_box').show();
   },
