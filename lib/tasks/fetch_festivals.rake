@@ -34,7 +34,7 @@ module Songkick
 	end
 
 	def self.fetch_festival_ids
-		num_of_pages = 20
+		num_of_pages = 2
 		master_array = []
 		(1..num_of_pages).each do |page_listings|
 		  p = Page.new("http://www.songkick.com/search?page=#{page_listings}&per_page=10&query=festival&type=upcoming")
