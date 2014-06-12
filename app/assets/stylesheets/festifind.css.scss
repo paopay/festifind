@@ -1,6 +1,13 @@
+// hipster colors: #52443B - Brown
+// #BDBDBD: gray
+// #767177: darker gray
+// #E0B453: gold
+// #353535: charcoal
+
+
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
-$main-color: #DC9C76;
+$main-color: #767177;
 @mixin rounded-corners {
   border-radius: 15px;
 }
@@ -21,7 +28,9 @@ $main-color: #DC9C76;
 }
 body {
   background-color: $main-color;
-  color: black;
+  background: url(http://subtlepatterns.com/patterns/tweed.png);
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .upcoming,.popularity,.distance,.random,.filters{
@@ -35,9 +44,11 @@ body {
 }
 
 #header_bar {
-    background-color:lighten($main-color,20%);
+    background-color:#353535;
+    background: url(http://subtlepatterns.com/patterns/binding_dark.png);
   @include basic-seperators    
 }
+
 .band_name{
   display:inline;
   font-size: 20px;
@@ -88,6 +99,7 @@ text-align: center;
     font-family: 'Pacifico', cursive;
     font-size: 500%;
     text-align: center;
+    color: #E0B453;
     padding: 10px;
   }
   .artist_row{
