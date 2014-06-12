@@ -5,15 +5,18 @@
 // #353535: charcoal
 
 
-@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Dosis);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 $main-color: #767177;
 @mixin rounded-corners {
   border-radius: 15px;
 }
 @mixin band-name-info {
   color:#63AFD0;
-  font-family:Arial;
+  font-family: 'Raleway';
   font-size:20px;
   font-weight:bold;
   font-style:normal;
@@ -29,6 +32,7 @@ $main-color: #767177;
 body {
   background-color: $main-color;
   background: url(http://subtlepatterns.com/patterns/tweed.png);
+  font-family: 'Dosis', serif;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
@@ -43,10 +47,22 @@ body {
   font-weight:bold;
 }
 
+//---------HEADER-----------
+
 #header_bar {
-    background-color:#353535;
-    background: url(http://subtlepatterns.com/patterns/binding_dark.png);
-  @include basic-seperators    
+  background-color:#353535;
+  color: #E0B453;
+  background: url(http://subtlepatterns.com/patterns/binding_dark.png);
+  @include basic-seperators;
+  font-family: 'Bree Serif', cursive;    
+}
+
+#header_text {
+  font-family: 'Pacifico', cursive;
+  font-size: 500%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 0;
 }
 
 .band_name{
@@ -87,28 +103,13 @@ color: #FF8700;
 text-align: center;
 }
 
-#header {
-  font-family: 'Kaushan Script', cursive;
-  font-size: 500%;
-  text-align: center;
-  padding: 10px;
-}
-
-
-#header_text {
-    font-family: 'Pacifico', cursive;
-    font-size: 500%;
-    text-align: center;
-    color: #E0B453;
-    padding: 10px;
-  }
-  .artist_row{
+.artist_row{
   padding:5px;
   display:block;
-  }
+}
 
-  .artist_row:nth-child(odd) {
-    background-color: #F5E5B7;
+.artist_row:nth-child(odd) {
+  background-color: #F5E5B7;
 }
 
 #grid {
@@ -116,7 +117,9 @@ text-align: center;
   text-align: center;
 }
 
-.block, .image, .info {
+.block, 
+.image, 
+.info {
   overflow: hidden;
 }
 
