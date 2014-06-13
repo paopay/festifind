@@ -4,16 +4,18 @@
 // #E0B453: gold
 // #353535: charcoal
 
-
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
 @import url(http://fonts.googleapis.com/css?family=Rokkitt);
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 @import url(http://fonts.googleapis.com/css?family=Dosis);
 @import url(http://fonts.googleapis.com/css?family=Raleway);
+
 $main-color: #767177;
+
 @mixin rounded-corners {
   border-radius: 15px;
 }
+
 @mixin band-name-info {
   color:#63AFD0;
   font-family: 'Raleway';
@@ -25,10 +27,12 @@ $main-color: #767177;
   line-height:28px;
   text-decoration:none;
 }
+
 @mixin basic-seperators{
   margin-bottom: 20px;
     text-align: center;
 }
+
 body {
   background-color: $main-color;
   background: url(http://subtlepatterns.com/patterns/tweed.png);
@@ -37,7 +41,7 @@ body {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.upcoming,.popularity,.distance,.random,.filters{
+.upcoming,.popularity,.distance,.random,.filters {
   margin-bottom: 20px;
   text-align: center;
   @include basic-seperators;
@@ -59,25 +63,27 @@ body {
 //---------HEADER-----------
 
 #header_bar {
+  @include basic-seperators;
   background-color:#353535;
   color: #E0B453;
   background: url(http://subtlepatterns.com/patterns/binding_dark.png);
-  @include basic-seperators;
-  font-family: 'Bree Serif', cursive;    
+  font-family: 'Bree Serif', cursive;
+  margin-bottom: 0;   
 }
 
 #header_text {
+  @include basic-seperators;
   font-family: 'Pacifico', cursive;
   font-size: 500%;
   text-align: center;
-  padding: 10px;
-  margin-top: 0;
+  padding-bottom: 10px;
 }
 
 .band_name{
   display:inline;
   font-size: 20px;
 }
+
 .list-placeholder{
   width:325px;
   display:inline-block;
@@ -137,10 +143,10 @@ text-align: center;
 }
 
 .block {
+  @include rounded_corners;
   height: 300px;
   width: 300px;
   background-color: #0772a1;
-  @include rounded_corners;
   margin: 1px;
   padding: 2px;
 }
@@ -225,8 +231,8 @@ display: inline-block;
 #show_favs{
   display:none;
   #each_festival {
-  font-size:.5em;
-}
+    font-size:.5em;
+  }
 }
 
 .playlist {
