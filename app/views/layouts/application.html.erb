@@ -16,13 +16,18 @@
     {{#each this}}
 
     <div class="row">
-          <div class="festival_name">{{display_name}}</div>
-          <div class="city">{{city_name}}</div>
-          <div class="date">{{start_date}}</div>
-          <div class="image" style="background-image:url({{icon}})"><img class="festival-icon" src={{fest_icon}}></div>
-            <i><span class="favs"><a href="/festivals/{{id}}" target="_blank">Videos</a></span></i>
-            <span class="fav_text"><a class="favs" href="" data-val={{display_name}}>Favorite</a></span>
-            <span class="favs"><a href="http://seatgeek.com/search?search={{display_name}}" target="_blank">Tickets</a></span>
+          <div class="left_info">
+            <div class="festival_name">{{display_name}}</div>
+            <div class="city">{{city_name}}</div>
+            <div class="date">{{start_date}}</div>
+            <div class="image" style="background-image:url({{icon}})"><img class="festival-icon" src={{fest_icon}}></div>
+              <i><span class="favs"><a href="/festivals/{{id}}" target="_blank">Videos</a></span></i>
+              <span class="fav_text"><a class="favs" href="" data-val={{display_name}}>Favorite</a></span>
+              <span class="favs"><a href="http://seatgeek.com/search?search={{display_name}}" target="_blank">Tickets</a></span>
+          </div> 
+          <div class="middle_info">
+            <div class="playlist"><embed class="playlist-object" src="{{playlist_url}}"></div>
+          </div>
     </div>
 
     {{/each}}
