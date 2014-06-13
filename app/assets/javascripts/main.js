@@ -1,23 +1,23 @@
-var getArtists = (function(){
-  return {
-    finder: function(clickedFestival){
-      $.ajax({
-      url: '/artists/find',
-      data: {festival:clickedFestival},
-      type: 'GET'
-    })
-    .done(function(data){  
-      artistsJSONObject = data.artists
-      var source   = $("#some-template").html();
-    var template = Handlebars.compile(source);
-    var handleData = artistsJSONObject
+// var getArtists = (function(){
+//   return {
+//     finder: function(clickedFestival){
+//       $.ajax({
+//       url: '/artists/find',
+//       data: {festival:clickedFestival},
+//       type: 'GET'
+//     })
+//     .done(function(data){  
+//       artistsJSONObject = data.artists
+//       var source   = $("#some-template").html();
+//     var template = Handlebars.compile(source);
+//     var handleData = artistsJSONObject
 
-    $(".artists_module").show();
-    $("#list-placeholder").html(template(handleData));   
-    })
-    }
-  }
-})();
+//     $(".artists_module").show();
+//     $("#list-placeholder").html(template(handleData));   
+//     })
+//     }
+//   }
+// })();
 
 $(document).ready(function() {   
 user = {}
