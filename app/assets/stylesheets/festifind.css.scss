@@ -1,11 +1,24 @@
-@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-$main-color: #0772A1;
+// hipster colors: #52443B - Brown
+// #BDBDBD: gray
+// #767177: darker gray
+// #E0B453: gold
+// #353535: charcoal
+
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Dosis);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+$main-color: #767177;
+
 @mixin rounded-corners {
   border-radius: 15px;
 }
+
 @mixin band-name-info {
   color:#63AFD0;
-  font-family:Arial;
+  font-family: 'Raleway';
   font-size:20px;
   font-weight:bold;
   font-style:normal;
@@ -14,33 +27,63 @@ $main-color: #0772A1;
   line-height:28px;
   text-decoration:none;
 }
+
 @mixin basic-seperators{
   margin-bottom: 20px;
     text-align: center;
 }
+
 body {
   background-color: $main-color;
-  color: black;
+  background: url(http://subtlepatterns.com/patterns/tweed.png);
+  font-family: 'Dosis', serif;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.upcoming,.popularity,.distance,.random,.filters{
-    margin-bottom: 20px;
-    text-align: center;
-    @include basic-seperators;
-    color:#FF8700;
-  font-family:Arial;
+.upcoming,.popularity,.distance,.random,.filters {
+  margin-bottom: 20px;
+  text-align: center;
+  @include basic-seperators;
+  color:#BDBDBD;
+  font-family:'Dosis';
   font-size:20px;
   font-weight:bold;
+    a {
+      text-decoration: none;
+        &:hover {
+          color: #E0B453;
+        }
+        &:visited {
+          color: #BDBDBD;
+        }
+    }
 }
 
+//---------HEADER-----------
+
 #header_bar {
-    background-color:lighten($main-color,20%);
-  @include basic-seperators    
+  @include basic-seperators;
+  background-color:#353535;
+  color: #E0B453;
+  background: url(http://subtlepatterns.com/patterns/binding_dark.png);
+  font-family: 'Bree Serif', cursive;
+  margin-bottom: 0;   
 }
+
+#header_text {
+  @include basic-seperators;
+  font-family: 'Pacifico', cursive;
+  font-size: 500%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .band_name{
   display:inline;
   font-size: 20px;
 }
+
 .list-placeholder{
   width:325px;
   display:inline-block;
@@ -75,27 +118,13 @@ color: #FF8700;
 text-align: center;
 }
 
-#header {
-  font-family: 'Kaushan Script', cursive;
-  font-size: 500%;
-  text-align: center;
-  padding: 10px;
-}
-
-
-#header_text {
-    font-family: 'Kaushan Script', cursive;
-    font-size: 500%;
-    text-align: center;
-    padding: 10px;
-  }
-  .artist_row{
+.artist_row{
   padding:5px;
   display:block;
-  }
+}
 
-  .artist_row:nth-child(odd) {
-    background-color: #F5E5B7;
+.artist_row:nth-child(odd) {
+  background-color: #F5E5B7;
 }
 
 #grid {
@@ -103,7 +132,9 @@ text-align: center;
   text-align: center;
 }
 
-.block, .image, .info {
+.block, 
+.image, 
+.info {
   overflow: hidden;
 }
 
@@ -112,10 +143,10 @@ text-align: center;
 }
 
 .block {
+  @include rounded_corners;
   height: 300px;
   width: 300px;
   background-color: #0772a1;
-  @include rounded_corners;
   margin: 1px;
   padding: 2px;
 }
@@ -200,8 +231,8 @@ display: inline-block;
 #show_favs{
   display:none;
   #each_festival {
-  font-size:.5em;
-}
+    font-size:.5em;
+  }
 }
 
 .playlist {
