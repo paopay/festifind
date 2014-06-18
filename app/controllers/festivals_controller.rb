@@ -7,6 +7,7 @@ class FestivalsController < ApplicationController
     @festival = Festival.find params[:id]
     @artists = @festival.artists
     @vid_src = "http://www.youtube.com/embed/" + Youtube.get_video_id(@artists.first, @artists.first.top_track)
+
   end
 
   def videos
@@ -22,6 +23,10 @@ class FestivalsController < ApplicationController
   def sort
     festivals = Festival.order(:start_date)
     render :json => {:result => festivals}
+  end
+
+  def angular 
+    @artists = @festival.artists
   end
 
   private

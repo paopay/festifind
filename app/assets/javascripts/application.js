@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular
+//= require angular-resource
 //= require handlebars-v1.3.0
 //= require turbolinks
 //= require jquery.flip.min

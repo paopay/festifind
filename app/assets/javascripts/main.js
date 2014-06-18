@@ -1,3 +1,4 @@
+
 var getArtists = (function(){
   return {
     finder: function(clickedFestival){
@@ -177,4 +178,5 @@ ProjectController.prototype = {
     $("#grid").html(template(this.projectModel.allFestivals));
   },
 }
+
 

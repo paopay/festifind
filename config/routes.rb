@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'festivals/sort', :to => 'festivals#sort'
   get 'festivals/videos', :to => 'festivals#videos'
   get 'artists/find', :to => 'artists#find'
-
+  get 'festivals/angular', :to => 'festivals#angular'
   resources :festivals, :only => [:index,:show]
   root :to => "festivals#index"
 end
