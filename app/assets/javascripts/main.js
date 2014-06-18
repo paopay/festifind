@@ -1,3 +1,4 @@
+
 var getArtists = (function(){
   return {
     finder: function(clickedFestival){
@@ -100,13 +101,13 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
-    $('.listen').on('click', this.showVids)
+    $(document).click('.listen', this.showVids)
   },
   showVids: function(e){
-    e.preventDefault();
+    
     $.ajax({
       url: '/festivals/videos/',
-      data: {artist: $(this).attr('data-val'), festival: $(this).attr('data-fest')},
+      data: {artist: $(event.target).attr('data-val'), festival: $(event.target).attr('data-fest')},
       type: 'GET'
     })
     .done(function(data){
@@ -177,4 +178,5 @@ ProjectController.prototype = {
     $("#grid").html(template(this.projectModel.allFestivals));
   },
 }
+
 
