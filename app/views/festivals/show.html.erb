@@ -1,10 +1,3 @@
-<h1>{{"Hello, Angular!"}}</h1>
-
-<div ng-controller="FestivalController as festival">
-
-<p ng-repeat="artist in festival.artists"> {{artist.display_name}} </p>
-
-</div>
 <div class="explore">
     <%= @festival.display_name %>
   </div>
@@ -12,12 +5,14 @@
 
 <div class="fav_artists_box">
 	<div class="list-placeholder">
-		<% @artists.each do |t| %>
-	    <div class="artist_row">
-	    	<span class="band_name"><%= t.display_name %></span>
-	    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="<%=t.id%>">Listen</a>
+		<div ng-controller="FestivalController as festival">
+	   	<div class="artist_row" ng-repeat="artist in festival.artists">
+	    	<span class="band_name">
+				{{artist.display_name}} 
+				</span>
+	    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="{{artist.id}}">Listen</a>
 	    </div>	    
-    <% end %>
+  		</div>
 	</div>
 
 	<div class="video-placeholder">
