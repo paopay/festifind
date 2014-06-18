@@ -1,15 +1,17 @@
-(function(){var festival= angular.module('app', []);
+// festivalName =$('.explore').html()
+(function(){
+	var festival = angular.module('app', []);
 festival.controller('FestivalController',['$http',function($http){
-this.artist = gem;
-
-$http.get('/festivals/20').success(function(data){
-	console.log(data);
+// this.artist = gem;
+// var go = []
+var festival = this
+festival.artists = []
+$http.get('/festivals/angular').success(function(data){
+	
+	festival.artists = data.result;
 })
-
 
 
 
 }]);
 })();
-
-var gem = {name: 'Dodecahedron',price: 2.95,description: 'cool cool'}

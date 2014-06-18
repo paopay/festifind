@@ -1,8 +1,8 @@
 <h1>{{"Hello, Angular!"}}</h1>
 
 <div ng-controller="FestivalController as festival">
-{{festival.artist.name}}
 
+<p ng-repeat="artist in festival.artists"> {{artist.display_name}} </p>
 
 </div>
 <div class="explore">
