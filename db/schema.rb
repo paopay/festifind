@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140603214017) do
   create_table "artists", force: true do |t|
     t.integer  "song_kick_id"
     t.string   "display_name"
+    t.boolean  "favorite",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "top_track"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140603214017) do
     t.float    "popularity"
     t.string   "url"
     t.string   "playlist_url"
+    t.boolean  "favorite",     default: false
     t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"

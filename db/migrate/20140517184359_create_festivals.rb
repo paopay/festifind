@@ -11,6 +11,7 @@ class CreateFestivals < ActiveRecord::Migration
     	t.float	:popularity
     	t.string :url
         t.string :playlist_url
+        t.boolean :favorite, default: false
         t.string :icon
     	t.timestamps
     end
