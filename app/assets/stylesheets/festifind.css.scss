@@ -127,7 +127,14 @@ text-align: center;
 .artist_row:nth-child(odd) {
   background-color: #F5E5B7;
 }
-
+.checkbox{
+  margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    float:left;
+}
 #grid {
   margin: 0 auto;
   text-align: center;
@@ -143,7 +150,7 @@ text-align: center;
   vertical-align: middle;
 }
 .red {
-  background-color:blue !important;
+  background-color:darken( #E0B453, 15% ) !important;
 }
 .block {
   @include rounded_corners;
@@ -274,6 +281,6 @@ border:1px solid #E0B453;
 height:300px
 }
 
-
+//----------
 
 

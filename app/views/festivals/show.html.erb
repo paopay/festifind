@@ -11,8 +11,20 @@
 		   	<div ng-class="{red: artist.favorite == true}" class="artist_row" ng-repeat="artist in festival.artists">
 		    	<span class="band_name">
 					{{artist.display_name}}<br> 
-					I want to see them!<input type="checkbox" ng-model="artist.favorite"></input>
-					</span>
+
+
+					   
+							<button ng-click="festival.favoriting(artist)" ng-model="artist.favorite">I want to see them</button>
+
+
+
+
+
+
+
+
+
+				</span>
 		    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="{{artist.id}}">Listen</a>
 		    </div>	    
 		</div>
