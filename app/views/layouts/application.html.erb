@@ -3,7 +3,7 @@
 <head>
   <title>Festifind</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -11,6 +11,17 @@
   <div id="header_bar">
     <div id="header_text">FestiFind</div>
     <h3>Complete Playlists,  Artist Videos and Tickets in a click</h3>
+      <br>
+      <div id="search_box">
+      <div id="search">
+        <h3>
+              <input type="text" name="search_text" id="search_text" placeholder="Search"/>
+              <input type="button" name="search_button" value="FestiFind" id="search_button"></a>
+        <span id="interest-dropdown-row"></span>
+        </h3>
+        </div>
+        </div>
+      </div>
   </div>
 
 <script id="some-template" type="text/x-handlebars-template">

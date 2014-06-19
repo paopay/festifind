@@ -102,9 +102,43 @@ ProjectController.prototype = {
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
     $(document).click('.listen', this.showVids)
+    $('#search').on('keyup', this.autoComplete.bind(this));
+    $('#interest_dropdown').on('click', 'a', this.insertAutoComplete)
   },
-  showVids: function(e){
+
+  autoComplete: function(e){
+    e.preventDefault();
+    $('#interest-dropdown-row')[0].textContent = ""
+    var searchLetters = $("#search_text").val();
+    var fests = this.projectModel.allFestivals
+    searchResults=[]
+    for(i=0; i<fests.length; i++){
+      if(searchLetters == fests[i].display_name.toLowerCase().slice(0,searchLetters.length)){
+        searchResults.push(fests[i].display_name)
+        this.projectModel.allFestivals.unshift(this.projectModel.allFestivals[i])
+      }
+    }
+    var source = $("#fest-template").html();
+    var template = Handlebars.compile(source);
+    $('.square').remove()
+    $("#grid").html(template(this.projectModel.allFestivals));
     
+    for(i=0; i<searchResults.length; i++){
+      $('#interest-dropdown-row').append('<br>')
+      $('#interest-dropdown-row').append(searchResults[i])
+    }
+  },
+  insertAutoComplete: function(e){
+    e.preventDefault();
+    var interest = $(this).html()
+    $('input#interest_name').val(interest)
+    $('#interest-dropdown-row').hide();
+    $("#add_interest").trigger('click');
+  },
+
+
+
+  showVids: function(e){
     $.ajax({
       url: '/festivals/videos/',
       data: {artist: $(event.target).attr('data-val'), festival: $(event.target).attr('data-fest')},
