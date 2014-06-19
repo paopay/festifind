@@ -101,43 +101,40 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
-    $(document).click('.listen', this.showVids)
-    $('#search').on('keyup', this.autoComplete.bind(this));
-    $('#interest_dropdown').on('click', 'a', this.insertAutoComplete)
+    $('.videos').on('click', this.showVids)
+    $('#search_box').on('keyup', this.autoComplete.bind(this));
   },
-
   autoComplete: function(e){
     e.preventDefault();
     $('#interest-dropdown-row')[0].textContent = ""
     var searchLetters = $("#search_text").val();
     var fests = this.projectModel.allFestivals
     searchResults=[]
+    arrayResults=[]
     for(i=0; i<fests.length; i++){
       if(searchLetters == fests[i].display_name.toLowerCase().slice(0,searchLetters.length)){
         searchResults.push(fests[i].display_name)
-        this.projectModel.allFestivals.unshift(this.projectModel.allFestivals[i])
+        arrayResults.push(this.projectModel.allFestivals[i])
+        this.projectModel.allFestivals.splice(i,1)
       }
+    }
+    for(i=0; i<arrayResults.length; i++){
+      this.projectModel.allFestivals.unshift(arrayResults[i])
     }
     var source = $("#fest-template").html();
     var template = Handlebars.compile(source);
     $('.square').remove()
     $("#grid").html(template(this.projectModel.allFestivals));
-    
-    for(i=0; i<searchResults.length; i++){
+    if(searchResults.length > 0){
+      for(i=0; i<searchResults.length; i++){
+        $('#interest-dropdown-row').append('<br>')
+        $('#interest-dropdown-row').append(searchResults[i])
+      }
+    }else{
       $('#interest-dropdown-row').append('<br>')
-      $('#interest-dropdown-row').append(searchResults[i])
+      $('#interest-dropdown-row').append('Nothing matches that, Try again')
     }
   },
-  insertAutoComplete: function(e){
-    e.preventDefault();
-    var interest = $(this).html()
-    $('input#interest_name').val(interest)
-    $('#interest-dropdown-row').hide();
-    $("#add_interest").trigger('click');
-  },
-
-
-
   showVids: function(e){
     $.ajax({
       url: '/festivals/videos/',
