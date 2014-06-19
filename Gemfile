@@ -31,6 +31,7 @@ gem 'handlebars_assets'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'therubyracer'
 gem 'angularjs-rails'
+gem 'pg_search'
  
  
 
