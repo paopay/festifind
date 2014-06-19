@@ -2,32 +2,30 @@
     <%= @festival.display_name %>
   </div>
 </div>
-
-<h1>Bands You want to see </h1>
-<div ng-controller="FestivalController as festival">
-	<div ng-repeat="artist in festival.artists">
-	<p ng-show="artist.favorite == true">{{artist.display_name}}</p>
-</div>
-
+	
+	
 
 <div class="fav_artists_box">
-	<div class="list-placeholder">
-		
-	   	<div class="artist_row" ng-repeat="artist in festival.artists">
-	    	<span class="band_name">
-				{{artist.display_name}} 
-				{{artist.favorite}}
-				<input type="checkbox" ng-model="artist.favorite">!!!</input>
-				</span>
-	    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="{{artist.id}}">Listen</a>
-	    </div>	    
-  	
+	<div ng-controller="FestivalController as festival">
+		<div class="list-placeholder">
+		   	<div ng-class="{red: artist.favorite == true}" class="artist_row" ng-repeat="artist in festival.artists">
+		    	<span class="band_name">
+					{{artist.display_name}}<br> 
+					I want to see them!<input type="checkbox" ng-model="artist.favorite"></input>
+					</span>
+		    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="{{artist.id}}">Listen</a>
+		    </div>	    
+		</div>
+		<div class="video-placeholder">
+			<%= render "youtube_vid" %>
+		</div>
+		<div id="favoriting_bands">
+			<h1 style="border-bottom: 2px solid black;">Bands You want to see </h1>
+			<div ng-repeat="artist in festival.artists">
+			<p ng-show="artist.favorite == true">{{artist.display_name}}</p>
+			</div>
+		</div>
 	</div>
-	<div class="video-placeholder">
-		<%= render "youtube_vid" %>
-	</div>
-</div>
-
 </div>
 
 
