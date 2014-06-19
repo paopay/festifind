@@ -101,10 +101,68 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
-    $(document).click('.listen', this.showVids)
+    $('.videos').on('click', this.showVids)
+    $('#search_box').on('keyup', this.autoComplete.bind(this));
+    $('#search_button').on('click', this.searchArtists.bind(this));
+  },
+  autoComplete: function(e){
+    e.preventDefault();
+    $('#interest-dropdown-row')[0].textContent = ""
+    var searchLetters = $("#search_text").val();
+    var fests = this.projectModel.allFestivals
+    searchResults=[]
+    arrayResults=[]
+    for(i=0; i<fests.length; i++){
+      if(searchLetters == fests[i].display_name.toLowerCase().slice(0,searchLetters.length)){
+        searchResults.push(fests[i].display_name)
+        arrayResults.push(this.projectModel.allFestivals[i])
+      }
+    }
+    var source = $("#fest-template").html();
+    var template = Handlebars.compile(source);
+    $('.square').remove()
+    $("#grid").html(template(arrayResults));
+    if(searchResults.length > 0){
+      for(i=0; i<searchResults.length; i++){
+        $('#interest-dropdown-row').append('<br>')
+        $('#interest-dropdown-row').append(searchResults[i])
+      }
+    }else{
+      $('#interest-dropdown-row').append('<br>')
+      $('#interest-dropdown-row').append('No festival matches that, Try again')
+    }
+  },
+  searchArtists: function(e){
+    e.preventDefault();
+    $('#artist-dropdown-row')[0].textContent = ""
+    $.ajax({
+      url: '/artists/search/',
+      data: {artist: $("#artist_search_text").val()},
+      type: 'GET'
+    })
+    .done(function(data){
+      allFestivals = []
+      if(data.results.length > 0){
+        for(i=0; i<data.results.length; i++){
+          $('#artist-dropdown-row').append('<br>')
+          $('#artist-dropdown-row').append(data.results[i][0])
+          $('#artist-dropdown-row').append(' <i>'+data.results[i][1][0].display_name+'<i>')
+          $('#artist-dropdown-row').append(' <i>'+data.results[i][1][0].city_name+'<i>')
+          allFestivals.push(data.results[i][1][0])
+        }
+      }else{
+        $('#artist-dropdown-row').append('<br>')
+        $('#artist-dropdown-row').append('No artist matches, Try again')
+      }
+      debugger
+
+      var source = $("#fest-template").html();
+      var template = Handlebars.compile(source);
+      $('.square').remove()
+      $("#grid").html(template(allFestivals))
+    })
   },
   showVids: function(e){
-    
     $.ajax({
       url: '/festivals/videos/',
       data: {artist: $(event.target).attr('data-val'), festival: $(event.target).attr('data-fest')},

@@ -226,3 +226,68 @@ display: inline-block;
   text-align: center;
   margin: auto;
 }
+
+#search_box {
+display: inline;
+float:right;
+margin-bottom: -20px;
+    
+}
+#search_text{
+    width: 225px;
+    padding: 15px 0 15px 20px;
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 32px;
+    margin-right: 0;
+    color: yellow;
+    outline: none;
+    background: orange;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+#artist_search_text{
+    width: 225px;
+    padding: 15px 0 15px 20px;
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 32px;
+    margin-right: 0;
+    color: yellow;
+    outline: none;
+    background: orange;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
+#search_text:focus {
+    background: blue;
+}
+#artist_search_text:focus {
+    background: blue;
+}
+#search_button {
+    border: 0 none;
+    background: orange center no-repeat;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 32px;
+    cursor: pointer;
+}
