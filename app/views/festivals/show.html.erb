@@ -2,8 +2,6 @@
     <%= @festival.display_name %>
   </div>
 </div>
-	
-	
 
 <div class="fav_artists_box">
 	<div ng-controller="FestivalController as festival">
@@ -11,21 +9,10 @@
 		   	<div ng-class="{red: artist.favorite == true}" class="artist_row" ng-repeat="artist in festival.artists">
 		    	<span class="band_name">
 					{{artist.display_name}}<br> 
-
-
-					   
 							<button ng-click="festival.favoriting(artist)" ng-model="artist.favorite">I want to see them</button>
-
-
-
-
-
-
-
-
-
 				</span>
-		    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-val="{{artist.id}}">Listen</a>
+				<a class="upcoming" href={{artist.seatgeek_url}} target="_blank">Upcoming Shows</a>
+		    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-artist="{{artist.id}}">Listen</a>
 		    </div>	    
 		</div>
 		<div class="video-placeholder">
@@ -38,6 +25,8 @@
 			</div>
 		</div>
 	</div>
+	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-artist="{{artist.id}}">Listen</a>
+
 </div>
 
 

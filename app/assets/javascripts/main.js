@@ -101,14 +101,15 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
-    $('.videos').on('click', this.showVids)
+    $(document).on('click','.listen', this.showVids)
     $('#search_box').on('keyup', this.autoComplete.bind(this))
     $('#search_button').on('click', this.searchArtists.bind(this))
   },
   autoComplete: function(e){
     e.preventDefault();
+    $('#artist-dropdown-row')[0].textContent = ""
     $('#interest-dropdown-row')[0].textContent = ""
-    var searchLetters = $("#search_text").val();
+    var searchLetters = $("#search_text").val().toLowerCase();
     var fests = this.projectModel.allFestivals
     searchResults=[]
     arrayResults=[]
@@ -122,18 +123,14 @@ ProjectController.prototype = {
     var template = Handlebars.compile(source);
     $('.square').remove()
     $("#grid").html(template(arrayResults));
-    if(searchResults.length > 0){
-      for(i=0; i<searchResults.length; i++){
-        $('#interest-dropdown-row').append('<br>')
-        $('#interest-dropdown-row').append(searchResults[i])
-      }
-    }else{
+    if(searchResults.length == 0){
       $('#interest-dropdown-row').append('<br>')
       $('#interest-dropdown-row').append('No festival matches that, Try again')
     }
   },
   searchArtists: function(e){
     e.preventDefault();
+    $('#interest-dropdown-row')[0].textContent = ""
     $('#artist-dropdown-row')[0].textContent = ""
     $.ajax({
       url: '/artists/search/',
@@ -161,9 +158,10 @@ ProjectController.prototype = {
     })
   },
   showVids: function(e){
+    debugger
     $.ajax({
       url: '/festivals/videos/',
-      data: {artist: $(event.target).attr('data-val'), festival: $(event.target).attr('data-fest')},
+      data: {artist: $(event.target).attr('data-artist'), festival: $(event.target).attr('data-fest')},
       type: 'GET'
     })
     .done(function(data){
