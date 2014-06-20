@@ -48,7 +48,7 @@ gem 'httparty'
 gem 'json'
 
 # Needed for the nokogiri fesitval ID scraping, son!
-# gem 'nokogiri'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'rspec-rails'

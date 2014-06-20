@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
 
 	def search
 		results = []
-		artist_match = Artist.search_by_name params[:artist]
+		artist_match = Artist.kinda_matching params[:artist]
 		artist_match.each_with_index do |artist, index|
 			results[index] = artist.display_name, artist.festivals
 		end
