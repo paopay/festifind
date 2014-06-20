@@ -26,8 +26,6 @@ class FestivalsController < ApplicationController
   end
 
   def angular 
-    
-    p "$" * 60
     @festival = Festival.find session[:festival_id]
     @artists = @festival.artists
     render :json => {:result => @artists}

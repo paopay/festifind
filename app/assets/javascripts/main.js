@@ -102,8 +102,8 @@ ProjectController.prototype = {
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
     $('.videos').on('click', this.showVids)
-    $('#search_box').on('keyup', this.autoComplete.bind(this));
-    $('#search_button').on('click', this.searchArtists.bind(this));
+    $('#search_box').on('keyup', this.autoComplete.bind(this))
+    $('#search_button').on('click', this.searchArtists.bind(this))
   },
   autoComplete: function(e){
     e.preventDefault();
@@ -154,8 +154,6 @@ ProjectController.prototype = {
         $('#artist-dropdown-row').append('<br>')
         $('#artist-dropdown-row').append('No artist matches, Try again')
       }
-      debugger
-
       var source = $("#fest-template").html();
       var template = Handlebars.compile(source);
       $('.square').remove()
