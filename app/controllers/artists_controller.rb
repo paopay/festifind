@@ -1,12 +1,21 @@
 class ArtistsController < ApplicationController
 
 	def find
-		p "This works, holy shit!"
-	greg = Festival.where(["display_name = ?", params[:festival]])
-	 render json: { artists: greg.first.artists }
+		greg = Festival.where(["display_name = ?", params[:festival]])
+	 	render json: { artists: greg.first.artists }
 	end
+
 	def create
 		Artist.create(artist_params)
+	end
+
+	def search
+		results = []
+		artist_match = Artist.search_by_name params[:artist]
+		artist_match.each_with_index do |artist, index|
+			results[index] = artist.display_name, artist.festivals
+		end
+		render :json => {results: results}
 	end
 
 	private

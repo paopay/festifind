@@ -29,8 +29,9 @@ gem 'awesome_print'
 gem 'handlebars_assets'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'therubyracer'
+# gem 'therubyracer'
 gem 'angularjs-rails'
+gem 'pg_search'
  
  
 
@@ -47,7 +48,7 @@ gem 'httparty'
 gem 'json'
 
 # Needed for the nokogiri fesitval ID scraping, son!
-gem 'nokogiri'
+# gem 'nokogiri'
 
 group :development, :test do
   gem 'rspec-rails'
