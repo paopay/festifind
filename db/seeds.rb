@@ -14,6 +14,9 @@ def make_festivals(json_response)
 									fest_icon: "http://www2.sk-static.com/images/media/profile_images/events/#{event["id"]}/col4")
 
 	p event["performance"]
+	url = Seatgeek.get_top_link(_festival.display_name)
+	_festival.update_attributes({:ticket_url => url})
+    _festival.save
 	event["performance"].each do |artist|
 		_festival.artists.create(song_kick_id: artist["artist"]["id"], display_name: artist["displayName"])
 	end
