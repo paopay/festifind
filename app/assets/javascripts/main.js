@@ -101,7 +101,7 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
-    $('.videos').on('click', this.showVids)
+    $(document).on('click','.listen',this.showVids)
     $('#search_box').on('keyup', this.autoComplete.bind(this))
     $('#search_button').on('click', this.searchArtists.bind(this))
   },
