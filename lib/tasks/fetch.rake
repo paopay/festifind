@@ -1,7 +1,11 @@
-Songkick.fetch_festival_ids
+
+task scrap_songkick: :environment do
+	json_list = Songkick.fetch_festival_ids
+end
 
 def make_festivals(json_response)
 	event = json_response["resultsPage"]["results"]["event"]
+	url = Seatgeek.get_top_link(event["displayName"])
 	_festival = Festival.create(song_kick_id: event["id"],
 									popularity: event["popularity"],
 									display_name: event["displayName"],
@@ -11,12 +15,11 @@ def make_festivals(json_response)
 									lng: event["location"]["lng"],
 									city_name: event["location"]["city"],
 									url: event["uri"],
-									fest_icon: "http://www2.sk-static.com/images/media/profile_images/events/#{event["id"]}/col4")
+									fest_icon: "http://www2.sk-static.com/images/media/profile_images/events/#{event["id"]}/col4",
+									tickets_url: url)
 
-	p event["performance"]
-	url = Seatgeek.get_top_link(_festival.display_name)
-	_festival.update_attributes({:ticket_url => url})
-    _festival.save
+	p _festival
+	_festival.save
 	event["performance"].each do |artist|
 		seatgeek = 'https://seatgeek.com/'+ artist["displayName"].gsub(' ','-') + '-tickets/?aid=10853'
 		_festival.artists.create(song_kick_id: artist["artist"]["id"], display_name: artist["displayName"], seatgeek_url: seatgeek)

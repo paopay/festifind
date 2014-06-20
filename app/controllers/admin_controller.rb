@@ -60,7 +60,6 @@ class AdminController < ApplicationController
      else
       playlists["result"].each do |playlist|      
        if playlist["name"] == festival.display_name
-        p playlist["name"]
          festival.update_attributes({:playlist_url => playlist["embedUrl"], :icon => playlist["icon"]})
          festival.save
        end
