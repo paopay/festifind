@@ -11,9 +11,10 @@ Our app is built in Ruby on Rails and makes use of the Songkick, Echo Nest, and 
 
 ***
 
-### Reflection
+### Important
 
-This code is extremely rough and has not been refactored yet. The database needs to be seeded and `rake scrap_songkick` needs to be run in order for this app to work. Furthermore, it takes about 30 minutes for the entire database to seed. This should be refactored. We can also refactor to cache artist hot tracks, but we wanted completely dynamic site that would change as artists hot tracks changed.
+ 
+ The database needs to be seeded and `rake scrap_songkick` needs to be run in order for initial seeding. Furthermore, it takes about 5 minutes for the entire database to seed, depending on the size of the festival collection. After this point, run your sever and go to the link localhost:3000/admin/generate'
 
 ***
 

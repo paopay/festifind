@@ -141,10 +141,10 @@ ProjectController.prototype = {
       allFestivals = []
       if(data.results.length > 0){
         for(i=0; i<data.results.length; i++){
-          $('#artist-dropdown-row').append('<br>')
           $('#artist-dropdown-row').append(data.results[i][0])
-          $('#artist-dropdown-row').append(' <i>'+data.results[i][1][0].display_name+'<i>')
-          $('#artist-dropdown-row').append(' <i>'+data.results[i][1][0].city_name+'<i>')
+          $('#artist-dropdown-row').append('     <i>'+'    '+data.results[i][1][0].display_name+'<i>')
+          $('#artist-dropdown-row').append('     <i>'+'    '+data.results[i][1][0].city_name+'<i>')
+          $('#artist-dropdown-row').append('<br>')
           allFestivals.push(data.results[i][1][0])
         }
       }else{
