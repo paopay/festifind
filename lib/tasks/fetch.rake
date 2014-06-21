@@ -17,11 +17,11 @@ def make_festivals(json_response)
 									url: event["uri"],
 									fest_icon: "http://www2.sk-static.com/images/media/profile_images/events/#{event["id"]}/col4",
 									tickets_url: url)
-
 	p _festival
 	_festival.save
+	seatgeek_id = ENV['SEATGEEK_APP_KEY']
 	event["performance"].each do |artist|
-		seatgeek = 'https://seatgeek.com/'+ artist["displayName"].gsub(' ','-') + '-tickets/?aid=10853'
+		seatgeek = 'https://seatgeek.com/'+ artist["displayName"].gsub(' ','-') + "-tickets/?aid=#{seatgeek_id}"
 		_festival.artists.create(song_kick_id: artist["artist"]["id"], display_name: artist["displayName"], seatgeek_url: seatgeek)
 	end
 end
@@ -31,7 +31,6 @@ module Songkick
 	require 'net/http'
 	require 'nokogiri'
 	require 'json'
-
 
 	def self.pull_id(listing)
 	  /id\/(\d+)/.match(listing).to_a.last.to_i
@@ -52,7 +51,8 @@ module Songkick
 	end
 
 	def self.fetch_festival_info(id)
-		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=XeBZx90YoQLiJG0M")
+		songkick_key = ENV['SONGKICK_API_KEY']
+		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=#{songkick_key}")
 		json_response = Net::HTTP.get(query_url)
 		make_festivals(JSON.parse(json_response))
 	end

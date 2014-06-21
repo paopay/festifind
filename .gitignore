@@ -69,4 +69,4 @@ config/secrets.yml
 
 # API keys file
 #####################
-/config/local_env.yml
+/config/local_env_variables.rb
