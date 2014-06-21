@@ -163,7 +163,6 @@ text-align: center;
   width:300px;
 }
 
-
 a.listen{
   float:right;
   @include band-name-info;
@@ -259,48 +258,16 @@ display: inline-block;
 }
 .search_results {
   margin: 0px auto;
-  font-size: 20px
+  font-size: 20px;
+  margin-right: auto;
+  margin-left: 500px;
 }
-#search_box {
-display: inline;
-float:right;
-margin-bottom: -20px;
-}
-#search_text{
-    width: 225px;
-    padding: 15px 0 15px 20px;
-    font-size: 20px;
-    font-family: Montserrat, sans-serif;
-    border: 0 none;
-    height: 32px;
-    margin-right: 0;
-    color: yellow;
-    outline: none;
-    background: orange;
-    float: left;
-    box-sizing: border-box;
-    transition: all 0.15s;
-}
-#artist_search_text{
-    width: 225px;
-    padding: 15px 0 15px 20px;
-    font-size: 20px;
-    font-family: Montserrat, sans-serif;
-    border: 0 none;
-    height: 32px;
-    margin-right: 0;
-    color: yellow;
-    outline: none;
-    background: orange;
-    float: left;
-    box-sizing: border-box;
-    transition: all 0.15s;
-}
+
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color: white;
+    color: green;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: white;
+    color: green;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color: white;
@@ -309,18 +276,13 @@ margin-bottom: -20px;
     color: white;
 }
 #search_text:focus {
-    background: blue;
+    background: white;
 }
 #artist_search_text:focus {
-    background: blue;
+    background: white;
 }
 #search_button {
-    border: 0 none;
-    background: orange center no-repeat;
-    width: 60px;
-    float: left;
-    padding: 0;
-    text-align: center;
+   
     height: 32px;
     cursor: pointer;
 }
