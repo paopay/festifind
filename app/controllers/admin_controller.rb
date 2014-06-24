@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   def generate
     #get request tokens
-    rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"])
+    rdio = Rdio.new([ENV['RDIO_CONSUMER'], ENV['RDIO_TOKEN']])
     callback_url = (URI.join request.url, admin_auth_path).to_s
     url = rdio.begin_authentication(callback_url)
     # save our request token in the session
@@ -19,7 +19,7 @@ class AdminController < ApplicationController
     # make sure we have everything we need
     if request_token and request_token_secret and verifier
       # exchange the verifier and request token for an access token
-      rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],
+      rdio = Rdio.new([ENV['RDIO_CONSUMER'], ENV['RDIO_TOKEN']],
                       [request_token, request_token_secret])
       rdio.complete_authentication(verifier)
       # save the access token in cookies (and discard the request token)
@@ -36,10 +36,10 @@ class AdminController < ApplicationController
     access_token = session[:at]
     access_token_secret = session[:ats]
     if access_token and access_token_secret
-      rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
+      rdio = Rdio.new([ENV['RDIO_CONSUMER'], ENV['RDIO_TOKEN']],[access_token, access_token_secret])
       currentUser = rdio.call('currentUser')['result']
     end
-    playlists = rdio.call('getUserPlaylists', {"user" => 's21182955',"count" => 240});
+    playlists = rdio.call('getUserPlaylists', {"user" => ENV['RDIO_USER'],"count" => 240});
     Festival.all.each do |festival|
 
       if festival.playlist_url == nil
