@@ -101,11 +101,7 @@ ProjectController.prototype = {
     $('.upcoming').on('click', this.sortFestbyDate.bind(this))
     $('.random').on('click', this.sortFestbyRandom.bind(this))
     $('.my_favs').on('click', this.showFavs)
-<<<<<<< HEAD
-    $(document).on('click','.listen',this.showVids)
-=======
     $(document).on('click','.listen', this.showVids)
->>>>>>> fff7c50ebbdad5464362a8ca64180f411fa3d6aa
     $('#search_box').on('keyup', this.autoComplete.bind(this))
     $('#search_button').on('click', this.searchArtists.bind(this))
   },

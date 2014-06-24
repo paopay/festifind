@@ -9,10 +9,7 @@
 		   	<div ng-class="{red: artist.favorite == true}" class="artist_row" ng-repeat="artist in festival.artists">
 		    	<span class="band_name">
 					{{artist.display_name}}<br> 
-<<<<<<< HEAD
 
-
-					   
 				<button ng-click="festival.favoriting(artist)" ng-model="artist.favorite">I want to see them</button>
 
 
@@ -22,10 +19,6 @@
 
 
 
-
-=======
-							<button ng-click="festival.favoriting(artist)" ng-model="artist.favorite">I want to see them</button>
->>>>>>> fff7c50ebbdad5464362a8ca64180f411fa3d6aa
 				</span>
 				<a class="upcoming" href={{artist.seatgeek_url}} target="_blank">Upcoming Shows</a>
 		    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-artist="{{artist.id}}">Listen</a>
