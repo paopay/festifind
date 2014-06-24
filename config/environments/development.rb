@@ -34,4 +34,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Loads the api keys from the 'config/local_env_variables.rb' file
+  app_environment_variables = File.join(Rails.root, 'config', 'local_env_variables.rb')
+  load(app_environment_variables) if File.exists?(app_environment_variables)
 end
