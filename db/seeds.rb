@@ -1,4 +1,5 @@
 Songkick.fetch_festival_ids
+Songkick.grab_favorites
 
 def make_festivals(json_response)
 	event = json_response["resultsPage"]["results"]["event"]

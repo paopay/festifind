@@ -32,6 +32,21 @@ module Songkick
 	require 'nokogiri'
 	require 'json'
 
+	def self.grab_favorites
+		Festival.all.each do |festival|
+		tracks = []
+			festival.artists.each do |artist|
+          new_tracks, top_track_id = Echonest.get_tracks_list(artist.song_kick_id.to_s)
+          tracks << new_tracks
+          
+          artist.update_attribute(:top_track, top_track_id)
+         p artist.display_name
+         p artist.top_track
+        end
+
+		end
+	end
+	
 	def self.pull_id(listing)
 	  /id\/(\d+)/.match(listing).to_a.last.to_i
 	end

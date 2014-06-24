@@ -7,6 +7,7 @@ class Echonest
   end
 
   def self.get_tracks_list(songkick_artist_id)
+    p "is this working?"
     tracks = Array.new
     top_track = ''
     json = self.get_track_json(songkick_artist_id)
