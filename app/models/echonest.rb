@@ -1,8 +1,8 @@
 class Echonest
 
-  echonest_key = ENV['ECHONEST_API_KEY']
 
   def self.get_track_json(songkick_artist_id)
+    echonest_key = ENV['ECHONEST_API_KEY']
     query_url = "http://developer.echonest.com/api/v4/playlist/static?api_key=" + echonest_key + "&artist_id=songkick:artist:" + songkick_artist_id.to_s + "&sort=song_hotttnesss-desc&results=3&type=artist&bucket=tracks&bucket=id:rdio-US&limit=true"
     query_response = HTTParty.get(query_url).body
     return MultiJson.load(query_response)

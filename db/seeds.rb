@@ -16,9 +16,10 @@ def make_festivals(json_response)
 	p event["performance"]
 	url = Seatgeek.get_top_link(_festival.display_name)
 	_festival.update_attributes({:ticket_url => url})
-    _festival.save
+  _festival.save
+ 	seatgeek_id = ENV['SEATGEEK_APP_KEY']
 	event["performance"].each do |artist|
-		seatgeek = 'https://seatgeek.com/'+ artist["displayName"].gsub(' ','-') + '-tickets/?aid=10853'
+		seatgeek = 'https://seatgeek.com/'+ artist["displayName"].gsub(' ','-') + '-tickets/?aid=#{seatgeek_id}'
 		_festival.artists.create(song_kick_id: artist["artist"]["id"], display_name: artist["displayName"], seatgeek_url: seatgeek)
 	end
 end
@@ -49,7 +50,8 @@ module Songkick
 	end
 
 	def self.fetch_festival_info(id)
-		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=XeBZx90YoQLiJG0M")
+		songkick_key = ENV['SONGKICK_API_KEY']
+		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=#{songkick_key}")
 		json_response = Net::HTTP.get(query_url)
 		make_festivals(JSON.parse(json_response))
 	end

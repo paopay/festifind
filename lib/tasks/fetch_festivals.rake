@@ -48,7 +48,8 @@ module Songkick
 	end
 
 	def self.fetch_festival_info(id)
-		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=XeBZx90YoQLiJG0M")
+		songkick_key = ENV['SONGKICK_API_KEY']
+		query_url = URI("http://api.songkick.com/api/3.0/events/#{id}.json?apikey=#{songkick_key}")
 		json_response = Net::HTTP.get(query_url)
 		make_festivals(JSON.parse(json_response))
 	end
