@@ -34,6 +34,7 @@ class AdminController < ApplicationController
 
   def playlists
     access_token = session[:at]
+
     access_token_secret = session[:ats]
     if access_token and access_token_secret
       rdio = Rdio.new(["5xw5hwkpeerqpmcbwmgswaya", "qfy65r6Zrw"],[access_token, access_token_secret])
@@ -41,7 +42,12 @@ class AdminController < ApplicationController
     end
     playlists = rdio.call('getUserPlaylists', {"user" => 's21182955',"count" => 240});
     Festival.all.each do |festival|
-
+      playlists["result"].each do |playlist|      
+       if playlist["name"] == festival.display_name
+         festival.update_attributes({:playlist_url => playlist["embedUrl"], :icon => playlist["icon"]})
+         festival.save
+       end
+      end
       if festival.playlist_url == nil
         name = festival.display_name
         desc = festival.city_name
@@ -57,15 +63,11 @@ class AdminController < ApplicationController
         playlists = rdio.call('createPlaylist', {"name" => name, "description" => desc, "tracks" => tracks})
         festival.update_attributes({:playlist_url => playlists["result"]["embedUrl"], :icon => playlists["result"]["icon"]})
         festival.save
-     else
-      playlists["result"].each do |playlist|      
-       if playlist["name"] == festival.display_name
-         festival.update_attributes({:playlist_url => playlist["embedUrl"], :icon => playlist["icon"]})
-         festival.save
-       end
       end 
     end
-  end
+
+    
+
     redirect_to root_path
   end
 end

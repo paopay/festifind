@@ -32,7 +32,7 @@ gem 'handlebars_assets'
 # gem 'therubyracer'
 gem 'angularjs-rails'
 gem 'pg_search'
- 
+gem 'byebug'
  
 
 # Use unicorn as the app server
