@@ -31,7 +31,12 @@ module Songkick
 	require 'net/http'
 	require 'nokogiri'
 	require 'json'
+	def self.get_images
+		require "awesome_print"
+		response = HTTParty.get('https://www.googleapis.com/customsearch/v1?key=AIzaSyA8K33aJWJrBP23XfrVn34HYg2fG4Js1AI&cx=001913588589495655496:k2ycnxpl5ye&q=outsidelands2014&searchType=image&fileType=jpg&imgSize=small&alt=json')
+		ap response
 
+	end
 	def self.grab_favorites
 		Festival.all.each do |festival|
 		tracks = []

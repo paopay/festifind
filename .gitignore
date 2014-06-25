@@ -62,6 +62,7 @@ pickle-email-*.html
 config/initializers/secret_token.rb
 config/secrets.yml
 .env
+config/local_env_variables.rb
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc

@@ -33,6 +33,8 @@ gem 'handlebars_assets'
 gem 'angularjs-rails'
 gem 'pg_search'
 gem 'byebug'
+gem 'httparty'
+gem 'awesome_print'
  
 
 # Use unicorn as the app server
