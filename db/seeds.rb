@@ -1,6 +1,6 @@
-# Songkick.fetch_festival_ids
-# Songkick.grab_favorites
-Songkick.get_images
+Songkick.fetch_festival_ids
+Songkick.grab_favorites
+# Songkick.get_images
 def make_festivals(json_response)
 	event = json_response["resultsPage"]["results"]["event"]
 	_festival = Festival.create(song_kick_id: event["id"],
