@@ -1,4 +1,5 @@
 
+
 task scrap_songkick: :environment do
 	json_list = Songkick.fetch_festival_ids
 end
@@ -32,10 +33,17 @@ module Songkick
 	require 'nokogiri'
 	require 'json'
 	def self.get_images
+				Festival.all.each do |festival|
+				festival_name	= festival.display_name.downcase.tr!(" ", "_")
+				
 		require "awesome_print"
-		response = HTTParty.get('https://www.googleapis.com/customsearch/v1?key=AIzaSyA8K33aJWJrBP23XfrVn34HYg2fG4Js1AI&cx=001913588589495655496:k2ycnxpl5ye&q=outsidelands2014&searchType=image&fileType=jpg&imgSize=small&alt=json')
-		ap response
-
+		queryurl = get("https://www.googleapis.com/customsearch/v1?key=AIzaSyA8K33aJWJrBP23XfrVn34HYg2fG4Js1AI&cx=001913588589495655496:k2ycnxpl5ye&q=#{festival_name}&searchType=image&imgSize=large&alt=json&limit=1")
+		# greg = Net::HTTP.get(queryurl)
+		# response = HTTParty.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyA8K33aJWJrBP23XfrVn34HYg2fG4Js1AI&cx=001913588589495655496:k2ycnxpl5ye&q=#{festival_name}&searchType=image&imgSize=large&alt=json&limit=1")
+		# image_url = JSON.parse(greg) 
+		byebug
+		# ap response
+				end
 	end
 	def self.grab_favorites
 		Festival.all.each do |festival|
