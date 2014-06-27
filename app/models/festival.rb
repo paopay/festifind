@@ -1,10 +1,10 @@
 class Festival < ActiveRecord::Base
 	validates_uniqueness_of :song_kick_id
- 	has_and_belongs_to_many :artists
+ 	has_many :artists, through: :artists_festivals
+ 	has_many :artists_festivals
+ 	def self.images
 
- 	def images
-
- 		p "hello"
+ 		"hello"
 
  	end
 

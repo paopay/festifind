@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'artists/find', :to => 'artists#find'
   get 'artists/search', :to => 'artists#search'
   get 'festivals/angular/', :to => 'festivals#angular'
+  get 'festivals/angular_festivals', :to => 'festivals#angular_festivals'
   resources :festivals, :only => [:index,:show]
   root :to => "festivals#index"
 end

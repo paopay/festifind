@@ -1,6 +1,7 @@
 class FestivalsController < ApplicationController
 
   def index 
+    
   end
 
   def show
@@ -30,6 +31,14 @@ class FestivalsController < ApplicationController
     @artists = @festival.artists
     render :json => {:result => @artists}
   end
+
+  def angular_festivals
+    # festivals = Festival.all
+    @invite = Festival.includes(:artist).find(2)
+
+    # render  :json => {:result => festivals}
+  end
+
 
   private
   def festival_params
