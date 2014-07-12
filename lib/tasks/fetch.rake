@@ -18,7 +18,7 @@ def make_festivals(json_response)
 									url: event["uri"],
 									fest_icon: "http://www2.sk-static.com/images/media/profile_images/events/#{event["id"]}/col4",
 									tickets_url: url)
-	p _festival
+
 	_festival.save
 	seatgeek_id = ENV['SEATGEEK_APP_KEY']
 	event["performance"].each do |artist|
@@ -97,3 +97,7 @@ module Songkick
 	  end
 	end
 end
+
+
+
+

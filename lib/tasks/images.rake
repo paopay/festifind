@@ -13,9 +13,9 @@ module Google
 
 	def self.get_json_from_google(display_name)
 		display_name	= display_name.downcase.tr!(" ", "_")
-		response = HTTParty.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyA8K33aJWJrBP23XfrVn34HYg2fG4Js1AI&cx=001913588589495655496:k2ycnxpl5ye&q=#{display_name}&searchType=image&imgSize=large&alt=json&limit=1")
+		response = HTTParty.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyA8K33aJWJrBP23XfrVn34HYg2fG4Js1AI&cx=001913588589495655496:k2ycnxpl5ye&q=#{display_name}+lineup&searchType=image&imgSize=large&alt=json&limit=1")
 		
-		p response
+		ap response
 	end
 
 
