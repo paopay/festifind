@@ -11,14 +11,6 @@
 					{{artist.display_name}}<br> 
 
 				<button ng-click="festival.favoriting(artist)" ng-model="artist.favorite">I want to see them</button>
-
-
-
-
-
-
-
-
 				</span>
 				<a class="upcoming" href={{artist.seatgeek_url}} target="_blank">Upcoming Shows</a>
 		    	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-artist="{{artist.id}}">Listen</a>
@@ -37,11 +29,14 @@
 	<a class="listen" href="" data-fest= "<%=@festival.id%>" data-artist="{{artist.id}}">Listen</a>
 
 </div>
-
-
 <h3>
 	<a href="" onclick="setTimeout(function(){var ww = window.open(window.location, '_self'); ww.close(); }, 1000);">
     Close
 </a>
 </h3>
+<div ng-controller="LoginController">
+	<div ng-show="userIsAuthenticated">
+		<h1>Hello</h1>
+	</div>
+</div>
 
