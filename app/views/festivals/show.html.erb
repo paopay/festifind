@@ -36,7 +36,44 @@
 </h3>
 <div ng-controller="LoginController">
 	<div ng-show="userIsAuthenticated">
-		<h1>Hello</h1>
+		<h1>Hey{{formData.first_name}}</h1>
+	</div>
+	<div ng-hide="userIsAuthenticated">
+		<button ng-click="showLoginForm()" ng-init="count=0">Login</button>
+		<div class="login_form">
+				<div id="lightbox"></div>
+		<form ng-submit="processLogin()" class="white_content">
+				<span>Email</span><input type="text" ng-model="formData.email">
+				<span>Password</span><input type="text" ng-model="formData.password">
+				<button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+			</div>
+		</form>
+
+		<button ng-click="showForm()" ng-init="count=0">Create an account</button>
+		<div class="lightbox_form">
+			<div id="lightbox"></div>
+			<div class="white_content">
+				<form ng-submit="processForm()">
+					<h1>Create an account:</h1>
+				<span>First Name</span>
+				<input type="text" ng-model="formData.first_name">
+				<br>
+				<span>Last Name</span>
+				<input type="text" ng-model="formData.last_name">
+				<br>
+				<span>Email</span>
+				<input type="text" ng-model="formData.email">
+				<br>
+				<span>Password</span>
+				<input type="text" ng-model="formData.password">
+				<br>
+				<span>Password Confirmation</span>
+				<input type="text" ng-model="formData.password_confirmation">
+				<button type="submit" class="btn btn-success btn-lg btn-block">
+				<span class="glyphicon glyphicon-flash"></span> Submit!
+				</form>
+			</div>
+		</div>	
 	</div>
 </div>
 

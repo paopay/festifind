@@ -104,6 +104,7 @@ ProjectController.prototype = {
     $(document).on('click','.listen', this.showVids)
     $('#search_box').on('keyup', this.autoComplete.bind(this))
     $('#search_button').on('click', this.searchArtists.bind(this))
+    // $('.login').on('click',this.)
   },
   autoComplete: function(e){
     e.preventDefault();

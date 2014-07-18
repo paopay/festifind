@@ -281,6 +281,34 @@ border:1px solid #E0B453;
 height:300px
 }
 
-//----------
+.lightbox_form{
+display:none;
+}
+.login_form{
+  display:none
+}
 
+#lightbox{
+position:fixed; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background-color:black; 
+    opacity:.5;
+    text-align:center;
+    z-index:1001;
+}
+.white_content {
+    position: relative;
+    top: -50%;
+    left: 25%;
+    width: 50%;
+    height: -50%;
+    padding: 16px;
+    border: 16px solid orange;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
 

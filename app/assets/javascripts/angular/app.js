@@ -4,13 +4,24 @@
 
 	festival.controller('LoginController',['$http','$scope',function($http,$scope){
   	
-	var userIsAuthenticated = true;
+	$scope.userIsAuthenticated = false;
+	$scope.showLogin = false;
+	$scope.add = false;
+	$scope.showForm =function(){
+		$('.lightbox_form').css('display','block')
+	}
 	this.login = {}
+
 	$scope.formData = {};
+	$scope.firstName = {};
+	$scope.showLoginForm = function(){
+		console.log("hiiii")
+		$('.login_form').css('display','block')
+	};
 	$scope.processForm = function(){
-	console.log("dude")
 	$http.post('/users/create', $scope.formData)
 		.success(function(data) {
+			$scope.userIsAuthenticated = true;
 	});
 	};
 	}]);
